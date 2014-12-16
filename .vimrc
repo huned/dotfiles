@@ -53,11 +53,14 @@ endif
 if has("gui_running")
   " colorscheme ir_black
   colorscheme molokai
-  set lines=42 columns=80
+  set lines=35 columns=80
   "set guifont=Inconsolata:h14
-  set guifont=Monaco:h12
+  set guifont=Monaco:h14
   set guioptions-=T
-  set transparency=1
+  set transparency=0 "1
+
+  "ugh no balloons!!!
+  set noballooneval
 endif
 
 " Setup for multibyte
@@ -132,7 +135,7 @@ set list listchars=trail:·
 set wildignore+=*/tmp/*,*/.tmp/*,*.so,*.swp,*.zip,.DS_Store
 
 " additional excludes for delicious-web
-set wildignore+=*/wrap/*,*/node_modules/*,*/.git/*,*/.bundle/*,*/.vagrant/*,*/doc/*,*/vendor/*
+set wildignore+=*/wrap/*,*/node_modules/*,*/.git/*,*/.bundle*/*,*/.vagrant/*,*/doc/*,*/vendor/*
 set wildignore+=*.png,*.gif,*.jpe?g,*.ico
 
 "indent
