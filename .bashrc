@@ -7,6 +7,25 @@ export GREP_OPTIONS=--color=auto
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
+# define useful colors from clrs.cc
+export COLOR_NAVY='#001f3f'
+export COLOR_BLUE='#0074d9'
+export COLOR_AQUA='#7fdbff'
+export COLOR_TEAL='#39cccc'
+export COLOR_OLIVE='#3d9970'
+export COLOR_GREEN='#2ecc40'
+export COLOR_LIME='#01ff70'
+export COLOR_YELLOW='#ffdc00'
+export COLOR_ORANGE='#ff851b'
+export COLOR_RED='#ff4136'
+export COLOR_MAROON='#85144b'
+export COLOR_FUCHSIA='#f012be'
+export COLOR_PURPLE='#b10dc9'
+export COLOR_WHITE='#ffffff'
+export COLOR_SILVER='#dddddd'
+export COLOR_GRAY='#aaaaaa'
+export COLOR_BLACK='#111111'
+
 # better shell commands
 alias ls='ls -F'
 alias less='less -R'
