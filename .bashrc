@@ -1,6 +1,6 @@
 export PS1='[\t] \u@\h:\W \$ '
 export EDITOR=vim
-export PATH=./bin:~/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=./bin:./node_modules/.bin:~/bin:/usr/local/bin:/usr/local/sbin:$PATH
 export LESS_OPTS=-R
 export GREP_COLOR='1;37;41'
 export GREP_OPTIONS=--color=auto
