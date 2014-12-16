@@ -101,7 +101,9 @@ hi Underlined      guifg=#808080               gui=underline
 
 hi VertSplit       guifg=#808080 guibg=#080808 gui=bold
 hi VisualNOS                     guibg=#403D3D
-hi Visual                        guibg=#403D3D
+"hmb 2014-07-08 -- change visual bg color
+"hi Visual                        guibg=#403D3D
+hi Visual                        guibg=#fc178a
 hi WarningMsg      guifg=#FFFFFF guibg=#333333 gui=bold
 hi WildMenu        guifg=#66D9EF guibg=#000000
 
