@@ -26,19 +26,23 @@ export COLOR_SILVER='#dddddd'
 export COLOR_GRAY='#aaaaaa'
 export COLOR_BLACK='#111111'
 
+# screen session logging
+alias screen='screen -L'
+
 # better shell commands
 alias ls='ls -F'
 alias less='less -R'
 
 # mongodb
+export PATH=$HOME/data/opt/mongodb-2.0.2/bin:$PATH # UGH use mongodb 2.0.2 for who1
+#alias mongod='mongod --dbpath /usr/local/var/mongodb/ --profile 1 --setParameter failIndexKeyTooLong=false'
 ulimit -n 2048
 
 # postgres
 export PGDATA='/usr/local/var/postgres'
-alias pgstart='pg_ctl start'
-alias pgstop='pg_ctl stop'
 
 # resume scp file transfers
+alias scp='scp -C'
 alias scpresume='rsync --partial --progress --rsh=ssh'
 
 # renew dhcp lease
@@ -50,11 +54,16 @@ alias ios='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimul
 # rebuilds finder's "open with" menu contents
 alias rebuildopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user'
 
-# chrome
-alias chrome='open -a /Applications/Google\ Chrome.app --args --incognito'
+# remove metadata from jpgs
+alias scrubjpg='exiftool -P -all= '
 
 # truecrypt
-alias truecrypt='/Applications/TrueCrypt.app/Contents/MacOS/TrueCrypt truecrypt'
+alias truecrypt='/Applications/TrueCrypt.app/Contents/MacOS/TrueCrypt -t'
+alias tcmount='truecrypt -k ""'
+alias tcunmount='truecrypt -d'
+
+# concatenate pdfs
+alias concatpdf='/usr/local/bin/gs -q -sPAPERSIZE=a4 -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=out.pdf'
 
 # git
 alias gs='git status -sb'
@@ -66,10 +75,31 @@ alias gl='git log --stat'
 alias gb='git branch'
 alias gch='git checkout'
 alias gf='git fetch'
-alias gpall='for dir in `ls`; do pushd $dir; gp; popd; done'
+alias gpall='for dir in `ls`; do pushd $dir; gf && git gc; popd; done'
+
+# log management via nathan
+alias check_logs="find -x . -iname '*.log' -exec du -sk {} \; | sort -nr | head -n 10"
+alias cleanup_logs="find . -iname '*.log' -exec sh -c \"echo '' > {}\" \;"
+alias offenders="du -sk * | sort -nr | head -n 10"
 
 # bundler + ruby
 alias be='bundle exec'
+alias bb='bundle exec'
 alias bi='bundle install'
-export BUNDLE_GEMFILE=Gemfile.local
-eval "$(rbenv init -)"
+#export BUNDLE_GEMFILE=Gemfile.local
+#alias nolocalgemfile='unset BUNDLE_GEMFILE'
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# sequoia
+#export SEQUOIA_DEPLOY_USER=hbotee
+export GMAIL_DOMAINS='sequoiacap.com,734m.com' # for who2
+export SEQUOIA_DEPLOY_USER=app
+
+# qstk
+#export QSTK_DIR=~/play/coursera/2014/gatech/computational-investing-1/qstk
+
+# x11
+export DISPLAY=:0.0
+
+# bel -- e.g., `long_running_command && bel` will alert a defocused terminal
+alias bel='for n in $(seq 10); do tput bel; sleep 0.5 ; done'
