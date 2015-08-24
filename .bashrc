@@ -8,23 +8,23 @@ export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 # define useful colors from clrs.cc
-export COLOR_NAVY='#001f3f'
-export COLOR_BLUE='#0074d9'
-export COLOR_AQUA='#7fdbff'
-export COLOR_TEAL='#39cccc'
-export COLOR_OLIVE='#3d9970'
-export COLOR_GREEN='#2ecc40'
-export COLOR_LIME='#01ff70'
-export COLOR_YELLOW='#ffdc00'
-export COLOR_ORANGE='#ff851b'
-export COLOR_RED='#ff4136'
-export COLOR_MAROON='#85144b'
-export COLOR_FUCHSIA='#f012be'
-export COLOR_PURPLE='#b10dc9'
-export COLOR_WHITE='#ffffff'
-export COLOR_SILVER='#dddddd'
-export COLOR_GRAY='#aaaaaa'
-export COLOR_BLACK='#111111'
+#export COLOR_NAVY='#001f3f'
+#export COLOR_BLUE='#0074d9'
+#export COLOR_AQUA='#7fdbff'
+#export COLOR_TEAL='#39cccc'
+#export COLOR_OLIVE='#3d9970'
+#export COLOR_GREEN='#2ecc40'
+#export COLOR_LIME='#01ff70'
+#export COLOR_YELLOW='#ffdc00'
+#export COLOR_ORANGE='#ff851b'
+#export COLOR_RED='#ff4136'
+#export COLOR_MAROON='#85144b'
+#export COLOR_FUCHSIA='#f012be'
+#export COLOR_PURPLE='#b10dc9'
+#export COLOR_WHITE='#ffffff'
+#export COLOR_SILVER='#dddddd'
+#export COLOR_GRAY='#aaaaaa'
+#export COLOR_BLACK='#111111'
 
 # screen session logging
 alias screen='screen -L'
@@ -34,7 +34,6 @@ alias ls='ls -F'
 alias less='less -R'
 
 # mongodb
-export PATH=$HOME/data/opt/mongodb-2.0.2/bin:$PATH # UGH use mongodb 2.0.2 for who1
 #alias mongod='mongod --dbpath /usr/local/var/mongodb/ --profile 1 --setParameter failIndexKeyTooLong=false'
 ulimit -n 2048
 
@@ -49,18 +48,19 @@ alias scpresume='rsync --partial --progress --rsh=ssh'
 alias renew='sudo ipconfig set en0 DHCP'
 
 # ios simulator
-alias ios='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
+alias ios='xcrun instruments -w "iPhone 6 (8.3 Simulator)"'
 
 # rebuilds finder's "open with" menu contents
 alias rebuildopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user'
+alias dontnotify='launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist && killall NotificationCenter'
 
 # remove metadata from jpgs
 alias scrubjpg='exiftool -P -all= '
 
 # truecrypt
-alias truecrypt='/Applications/TrueCrypt.app/Contents/MacOS/TrueCrypt -t'
-alias tcmount='truecrypt -k ""'
-alias tcunmount='truecrypt -d'
+#alias truecrypt='/Applications/TrueCrypt.app/Contents/MacOS/TrueCrypt -t'
+#alias tcmount='truecrypt -k ""'
+#alias tcunmount='truecrypt -d'
 
 # concatenate pdfs
 alias concatpdf='/usr/local/bin/gs -q -sPAPERSIZE=a4 -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=out.pdf'
@@ -75,7 +75,7 @@ alias gl='git log --stat'
 alias gb='git branch'
 alias gch='git checkout'
 alias gf='git fetch'
-alias gpall='for dir in `ls`; do pushd $dir; gf && git gc; popd; done'
+alias gpall='for dir in `ls`; do pushd $dir; gf && gp && git gc; popd; done'
 
 # log management via nathan
 alias check_logs="find -x . -iname '*.log' -exec du -sk {} \; | sort -nr | head -n 10"
