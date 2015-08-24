@@ -48,10 +48,11 @@ map Q gq
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
+
 endif
 
 if has("gui_running")
-  " colorscheme ir_black
+  "colorscheme ir_black
   colorscheme molokai
   set lines=35 columns=80
   "set guifont=Inconsolata:h14
@@ -59,8 +60,9 @@ if has("gui_running")
   set guioptions-=T
   set transparency=0 "1
 
-  "ugh no balloons!!!
+  "ugh balloons!!! :(
   set noballooneval
+  set balloondelay=100000
 endif
 
 " Setup for multibyte
@@ -135,11 +137,14 @@ set list listchars=trail:·
 set wildignore+=*/tmp/*,*/.tmp/*,*.so,*.swp,*.zip,.DS_Store
 
 " additional excludes for delicious-web
-set wildignore+=*/wrap/*,*/node_modules/*,*/.git/*,*/.bundle*/*,*/.vagrant/*,*/doc/*,*/vendor/*
+set wildignore+=*/wrap/*,*/node_modules/*,*/.git/*,*/.bundle*/*,*/.vagrant/*,*/doc/*,*/.sass-cache/*,*/.meteor/*,*/dist_js/*
 set wildignore+=*.png,*.gif,*.jpe?g,*.ico
 
 "indent
 "autocmd VimEnter * :IndentGuidesEnable
 "let g:indent_guides_guide_size=1
+
+"js libraries
+let g:used_javascript_libs = 'jquery,underscore,backbone,angularjs,angularui'
 
 call pathogen#infect()
