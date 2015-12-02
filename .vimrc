@@ -133,12 +133,21 @@ au BufRead,BufNewFile *.coffee set filetype=coffee
 "display dots for whitespace
 set list listchars=trail:·
 
+let g:ctrlp_root_markers=['.project']
+"let g:ctrlp_working_path_mode='rc'
+"let g:ctrlp_user_command = 'find %s -type f'
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
+
 " exclude using wildignore
 set wildignore+=*/tmp/*,*/.tmp/*,*.so,*.swp,*.zip,.DS_Store
-
-" additional excludes for delicious-web
-set wildignore+=*/wrap/*,*/node_modules/*,*/.git/*,*/.bundle*/*,*/.vagrant/*,*/doc/*,*/.sass-cache/*,*/.meteor/*,*/dist_js/*
-set wildignore+=*.png,*.gif,*.jpe?g,*.ico
+set wildignore+=*/node_modules/*,*/.git/*,*/.bundle*/*,*/.vagrant/*,*/doc/*,*/docs/*
+set wildignore+=*.png,*.gif,*.jpe?g,*.ico,*.webp
+set wildignore+=*.tar,*.gz,*.bz2,*.jar,*.exe,*.out
+set wildignore+=*.min.css,*.min.js
+" AI structure
+set wildignore+=*.djar,*.mtr
+set wildignore+=*/results/*,*/qa/*,*/LanguageResources/*,*/help/*
 
 "indent
 "autocmd VimEnter * :IndentGuidesEnable
