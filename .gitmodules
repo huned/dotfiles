@@ -37,9 +37,6 @@
 [submodule ".local/share/nvim/site/pack/huned/start/vim-grepper"]
 	path = .local/share/nvim/site/pack/huned/start/vim-grepper
 	url = https://github.com/mhinz/vim-grepper
-[submodule ".local/share/nvim/site/pack/huned/start/vim-instant-markdown"]
-	path = .local/share/nvim/site/pack/huned/start/vim-instant-markdown
-	url = https://github.com/suan/vim-instant-markdown
 [submodule ".local/share/nvim/site/pack/huned/start/tabular"]
 	path = .local/share/nvim/site/pack/huned/start/tabular
 	url = git://github.com/godlygeek/tabular.git
