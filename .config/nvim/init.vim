@@ -18,29 +18,39 @@ syntax on                   " syntax highlighting
 set listchars=eol:↵,trail:~,tab:>-,nbsp:␣
 set list
 
+" COLOR SCHEME
+" ============
+"
 " https://vimawesome.com/plugin/onedark-vim
-" installed in ~/.local/share/nvim/site/pack/*/start/onedark-vim
 set termguicolors
-"colorscheme onedark
-"simply calling colorscheme didn't work. see https://github.com/joshdick/onedark.vim/issues/164
+"colorscheme onedark " this doesn't work. see https://github.com/joshdick/onedark.vim/issues/164
 call timer_start(0, {-> execute("colorscheme onedark")})
 
+" OTHER INSTALLED PLUGINS
+" =======================
+" Enforce standard js style
 " https://vimawesome.com/plugin/ale
 " https://vimawesome.com/plugin/standard
-let g:ale_linters = {
-\  'javascript': ['standard'],
-\}
+let g:ale_linters = {'javascript': ['standard']}
 let g:ale_fixers = {'javascript': ['standard']}
-
-" https://vimawesome.com/plugin/commentary-vim
-" OK
-
-" https://vimawesome.com/plugin/fzf
+"
 " https://github.com/junegunn/fzf
-" https://vimawesome.com/plugin/indentline
+" TODO
+"
+" https://github.com/Yggdroot/indentLine
+" no additional configuration
+
+" https://github.com/tpope/vim-surround
+" no additional configuration
+
+" https://github.com/preservim/nerdtree
+" no additional configuration
+"
 " https://github.com/voldikss/vim-floaterm
-" https://vimawesome.com/plugin/surround-vim
-" https://vimawesome.com/plugin/nerdtree-red
-" https://vimawesome.com/plugin/vim-grepper
-" https://vimawesome.com/plugin/instant-markdown-vim
-" https://vimawesome.com/plugin/tabular
+" no additional configuration
+"
+" https://github.com/mhinz/vim-grepper 
+" no additional configuration
+"
+" https://github.com/godlygeek/tabular
+" no additional configuration
