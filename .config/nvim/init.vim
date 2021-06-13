@@ -1,3 +1,9 @@
+" TODOs
+" - move environment variables to ~/.bashrc
+" - figure out how :tabnew and :FZF play together
+" - make myself a quick reference card
+" - autocomplete (deoplete? + ultisnips?)
+" - tpope/goyo.vim
 set nocompatible            " disable compatibility to old-time vi
 set showmatch               " show matching brackets.
 set ignorecase              " case insensitive matching
@@ -21,13 +27,14 @@ set list
 " COLOR SCHEME
 " ============
 "
-" https://vimawesome.com/plugin/onedark-vim
-set termguicolors
-"colorscheme onedark " this doesn't work. see https://github.com/joshdick/onedark.vim/issues/164
-call timer_start(0, {-> execute("colorscheme onedark")})
+" https://github.com/rakr/vim-one
+set termguicolors " assume truecolor-abled terminal
+set background=dark
+colorscheme one
 
 " OTHER INSTALLED PLUGINS
 " =======================
+"
 " Enforce standard js style
 " https://vimawesome.com/plugin/ale
 " https://vimawesome.com/plugin/standard
@@ -35,7 +42,12 @@ let g:ale_linters = {'javascript': ['standard']}
 let g:ale_fixers = {'javascript': ['standard']}
 "
 " https://github.com/junegunn/fzf
-" TODO
+" https://github.com/junegunn/fzf.vim
+let $FZF_DEFAULT_COMMAND = 'ag -l --nocolor --ignore .git --hidden -g ""'
+let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --border'
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+nnoremap <c-p> :Files<CR>
 "
 " https://github.com/Yggdroot/indentLine
 " no additional configuration
@@ -44,13 +56,18 @@ let g:ale_fixers = {'javascript': ['standard']}
 " no additional configuration
 
 " https://github.com/preservim/nerdtree
-" no additional configuration
-"
+nnoremap <c-\> :NERDTreeToggle<CR>
+
 " https://github.com/voldikss/vim-floaterm
-" no additional configuration
-"
+" For more configuration ideas/examples, see https://gist.github.com/TheCedarPrince/7b9b51af4c146880f17c39407815b594
+let g:floaterm_width = 0.8
+let g:floaterm_height = 0.8
+let g:floaterm_keymap_toggle = '<c-t>'
+
 " https://github.com/mhinz/vim-grepper 
-" no additional configuration
+"nnoremap <c-/> :Grepper<CR>
+nnoremap <leader>g :Grepper -tool git<cr>
+nnoremap <leader>G :Grepper -tool ag<cr>
 "
 " https://github.com/godlygeek/tabular
 " no additional configuration
