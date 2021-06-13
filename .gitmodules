@@ -43,3 +43,9 @@
 [submodule ".local/share/nvim/site/pack/huned/start/standard"]
 	path = .local/share/nvim/site/pack/huned/start/standard
 	url = https://github.com/feross/standard
+[submodule ".local/share/nvim/site/pack/huned/start/fzf.vim"]
+	path = .local/share/nvim/site/pack/huned/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
+[submodule ".local/share/nvim/site/pack/huned/start/vim-one"]
+	path = .local/share/nvim/site/pack/huned/start/vim-one
+	url = https://github.com/rakr/vim-one
