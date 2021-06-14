@@ -1,4 +1,4 @@
-How to use this:
+How to use:
 
 1. Login as user
 
@@ -20,26 +20,25 @@ How to use this:
     ln -s `pwd`/.local/share/nvim/site/pack/huned ~/.local/share/nvim/site/pack/huned
 
     # Other rc files
-    ln -s `pwd`/.npmrc ~/.npmrc
     ln -s `pwd`/.toprc ~/.toprc
+    ln -s `pwd`/.gitconfig ~/.gitconfig
     ln -s `pwd`/.sqliterc ~/.sqliterc
+    ln -s `pwd`/.nvmrc ~/.nvmrc
+    ln -s `pwd`/.npmrc ~/.npmrc
+    ln -s `pwd`/.ruby-version ~/.ruby-version
 
-    # TODO
-    .fzf.bash
-    .nvm, .nvmrc
-    .gconf, .gnome, .
-    .inputrc
-    .rbenv, .ruby-version
+    # Private settings
+    # TODO ssh keys
+    . ~/.env.secrets
 
-    # TODO private stuff
-    ssh keys
-    .gist
-    .sendgrid-mailrc
-    .heropmrc
+4. Run post-install scripts
 
-4. Run post-install script
-
+    # System-wide modifications
     ./postinstall.sh
+
+    # User-specific modifications
+    ./postinstall-user.sh
 
 5. Clone working repos and run their install scripts
 
+    # TODO
