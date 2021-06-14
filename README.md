@@ -20,6 +20,7 @@ How to use this:
     ln -s `pwd`/.local/share/nvim/site/pack/huned ~/.local/share/nvim/site/pack/huned
 
     # Other rc files
+    ln -s `pwd`/.npmrc ~/.npmrc
     ln -s `pwd`/.toprc ~/.toprc
     ln -s `pwd`/.sqliterc ~/.sqliterc
 
@@ -34,7 +35,6 @@ How to use this:
     # TODO private stuff
     ssh keys
     .gist
-    .npmrc
     .sendgrid-mailrc
     .heropmrc
 
