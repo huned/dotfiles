@@ -59,6 +59,7 @@ modprobe wl
 # apt-get -y install transmission
 
 # git
+sudo apt -y remove git
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt-get -y update && apt-get -y install git
 
