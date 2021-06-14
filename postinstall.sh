@@ -2,6 +2,7 @@
 # Post-install script for ElementaryOS. Run it as root via sudo.
 #
 # TODOs
+# - bail out if platform/uname doesn't meet expected value
 # - make this script idempotent
 # - change swap partition size to 2x RAM
 # - set up user account(s)
