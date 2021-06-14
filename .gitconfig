@@ -5,10 +5,7 @@
   branch = auto
   log = auto
 [user]
-  email = huned@734m.com
+  email = huned@hunedbotee.com
   name = Huned Botee
-[github]
-  user = huned
-  password = !security 2>&1 >/dev/null find-internet-password -gs github.com | ruby -e 'print $1 if STDIN.gets =~ /^password: \"(.*)\"$/'
 [push]
 	default = simple
