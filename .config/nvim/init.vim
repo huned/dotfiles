@@ -63,6 +63,9 @@ nnoremap <c-\> :NERDTreeToggle<CR>
 let g:floaterm_width = 0.8
 let g:floaterm_height = 0.8
 let g:floaterm_keymap_toggle = '<c-t>'
+"let g:floaterm_keymap_new = '<s-c-t>'
+"let g:floaterm_keymap_prev = '<s-c-lt>'
+"let g:floaterm_keymap_next = '<s-c-gt>'
 
 " https://github.com/mhinz/vim-grepper 
 "nnoremap <c-/> :Grepper<CR>
