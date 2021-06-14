@@ -37,7 +37,7 @@ apt-get -y update && apt-get -y upgrade
 
 # install common development libraries and tools
 apt-get -y install libbz2-dev libexpat1-dev libffi-dev libreadline-dev libsqlite3-dev libssl-dev unixodbc-dev zlib1g-dev
-apt-get -y install bat build-essential bzip2 curl docker.io fzf git jq ranger ripgrep sqlite3 tmux tree unzip wget zip
+apt-get -y install bat build-essential bzip2 curl docker.io fzf jq ranger ripgrep sqlite3 tmux tree unzip wget zip
 
 # install essential programs
 apt-get -y install chromium-browser dconf-editor firefox
@@ -58,6 +58,11 @@ modprobe wl
 # apt-get -y install flameshot
 # apt-get -y install transmission
 
+# git
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt-get -y update && apt-get -y install git
+
+# neovim
 add-apt-repository ppa:neovim-ppa/stable 
 apt-get -y update && apt-get -y install neovim
 
