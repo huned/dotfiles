@@ -4,8 +4,5 @@
   status = auto
   branch = auto
   log = auto
-[user]
-  email = huned@hunedbotee.com
-  name = Huned Botee
 [push]
 	default = simple

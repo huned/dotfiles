@@ -26,7 +26,6 @@ How to use this:
 
     # TODO
     .fzf.bash
-    .gitconfig
     .nvm, .nvmrc
     .gconf, .gnome, .
     .inputrc
