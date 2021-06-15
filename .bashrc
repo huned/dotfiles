@@ -247,7 +247,7 @@ export EDGAR_DIR="$PROJECTS_DIR/edgar-db"
 export EDGAR_ENV="development"
 
 # projects/hn250
-alias hn250="~/bin/jobs/daily-hn250-digest.sh"
+alias hn250="~/bin/daily-hn250-digest.sh"
 alias hn250status="systemctl --user status daily-hn250-digest.service daily-hn250-digest.timer"
 
 source ~/.env.secrets
