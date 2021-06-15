@@ -22,7 +22,7 @@ syntax on                   " syntax highlighting
 
 " `set list` to show whitespace characters
 set listchars=eol:↵,trail:~,tab:>-,nbsp:␣
-set list
+set nolist "don't display listchars by default
 
 " COLOR SCHEME
 " ============
