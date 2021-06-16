@@ -1,7 +1,8 @@
 " TODOs
-" - move environment variables to ~/.bashrc
-" - figure out how :tabnew and :FZF play together
-" - make myself a quick reference card
+" - TBD key mappings:
+"   - tabnew, tabnext, tabprevious
+"   - FloatermNew, FloatermNext, FloatermPrev
+" - remove plugins: nerdtree, ranger
 " - autocomplete (deoplete? + ultisnips?)
 " - tpope/goyo.vim
 set nocompatible            " disable compatibility to old-time vi
@@ -43,8 +44,9 @@ let g:ale_fixers = {'javascript': ['standard']}
 "
 " https://github.com/junegunn/fzf
 " https://github.com/junegunn/fzf.vim
-let $FZF_DEFAULT_COMMAND = 'ag -l --nocolor --ignore .git --hidden -g ""'
-let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --border'
+"Defined in environment
+"let $FZF_DEFAULT_COMMAND = 'ag -l --nocolor --ignore .git --hidden -g ""'
+"let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline --border'
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 nnoremap <c-p> :Files<CR>
@@ -55,14 +57,19 @@ nnoremap <c-p> :Files<CR>
 " https://github.com/tpope/vim-surround
 " no additional configuration
 
-" https://github.com/preservim/nerdtree
-nnoremap <c-\> :NERDTreeToggle<CR>
+" netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 3
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+nnoremap <c-\> :Lexplore<CR>
 
 " https://github.com/voldikss/vim-floaterm
 " For more configuration ideas/examples, see https://gist.github.com/TheCedarPrince/7b9b51af4c146880f17c39407815b594
 let g:floaterm_width = 0.8
 let g:floaterm_height = 0.8
-let g:floaterm_keymap_toggle = '<c-t>'
+"let g:floaterm_keymap_toggle = '<c-t>'
 "let g:floaterm_keymap_new = '<s-c-t>'
 "let g:floaterm_keymap_prev = '<s-c-lt>'
 "let g:floaterm_keymap_next = '<s-c-gt>'
