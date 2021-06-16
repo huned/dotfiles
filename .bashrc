@@ -250,4 +250,5 @@ export EDGAR_ENV="development"
 alias hn250="~/bin/daily-hn250-digest.sh"
 alias hn250status="systemctl --user status daily-hn250-digest.service daily-hn250-digest.timer"
 
-source ~/.env.secrets
+source $HOME/.env.secrets
+export $(cut -d= -f1 $HOME/.env.secrets)
