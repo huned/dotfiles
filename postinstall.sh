@@ -36,7 +36,7 @@ apt-get -y update && apt-get -y upgrade
 #apt-get -y dist-upgrade
 
 # install common development libraries and tools
-apt-get -y install libbz2-dev libexpat1-dev libffi-dev libreadline-dev libsqlite3-dev libssl-dev unixodbc-dev zlib1g-dev
+apt-get -y install lib32z1 libbz2-dev libexpat1-dev libffi-dev libreadline-dev libsqlite3-dev libssl-dev unixodbc-dev zlib1g-dev
 apt-get -y install bat build-essential bzip2 curl docker.io fzf jq ranger ripgrep sqlite3 tmux tree unzip wget zip
 
 # install essential programs
