@@ -200,7 +200,7 @@ alias sysdstartunit="systemctl --user reload-or-restart"
 alias sysdstopunit="systemctl --user stop"
 
 # common system commands
-alias less="less -R"
+alias less="less -FIRX"
 
 # bat
 if [ -f "$(which bat)" ]; then
