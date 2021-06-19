@@ -65,6 +65,13 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 nnoremap <c-\> :Lexplore<CR>
 
+" vim's built-in markdown
+let g:vim_markdown_frontmatter = 1      " YAML front matter
+let g:vim_markdown_folding_disabled = 1 " disable header folding
+let g:vim_markdown_conceal = 0          " conceal seems buggy, don't use it
+"let g:tex_conceal = ""                  " disable math tex conceal feature
+"let g:vim_markdown_math = 1
+
 " https://github.com/voldikss/vim-floaterm
 " For more configuration ideas/examples, see https://gist.github.com/TheCedarPrince/7b9b51af4c146880f17c39407815b594
 let g:floaterm_width = 0.8
