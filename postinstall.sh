@@ -24,11 +24,8 @@ apt-get -y purge `dpkg --get-selections | grep ":i386" | awk '{print $1}'`
 dpkg --remove-architecture i386
 
 # uninstall packages i don't use
-apt-get -y purge pantheon-mail maya-calendar epiphany-browser
+#apt-get -y purge pantheon-mail maya-calendar epiphany-browser
 #apt-get -y purge libreoffice
-
-# tidy up
-apt-get -y autoremove --purge
 
 # update system
 apt-get -y install software-properties-common
@@ -40,7 +37,7 @@ apt-get -y install lib32z1 libbz2-dev libexpat1-dev libffi-dev libreadline-dev l
 apt-get -y install bat build-essential bzip2 curl docker.io fzf jq ranger ripgrep sqlite3 tmux tree unzip wget zip
 
 # install essential programs
-apt-get -y install chromium-browser dconf-editor firefox
+apt-get -y install chromium-browser dconf-editor firefox transmission
 
 # install broadcom wifi drivers (wifi on 2013 macbook air)
 #
@@ -52,11 +49,6 @@ apt-get -y install chromium-browser dconf-editor firefox
 apt-get -y --reinstall install bcmwl-kernel-source
 modprobe -r b43 ssb wl brcmfmac brcmsmac bcma
 modprobe wl
-
-# Maybe install useful but not essential programs?
-# Uncomment to install them.
-# apt-get -y install flameshot
-# apt-get -y install transmission
 
 # git
 sudo apt -y remove git
@@ -98,11 +90,11 @@ apt-get -y update && apt-get -y upgrade
 # The easiest/fastest way is to just download the release binary.
 # NOTE: Do not run this as root. Users should be a member of the "input" group
 # and run this manually or via an automatic mechanism like systemd.
-wget --quiet --timestamping --directory-prefix=$TMPDIR https://github.com/marsqing/libinput-three-finger-drag/releases/download/0.1/libinput-three-finger-drag.tgz
-mkdir -p /usr/local/libinput-three-finger-drag
-pushd /usr/local/libinput-three-finger-drag
-tar xzf $TMPDIR/libinput-three-finger-drag.tgz
-popd
+# wget --quiet --timestamping --directory-prefix=$TMPDIR https://github.com/marsqing/libinput-three-finger-drag/releases/download/0.1/libinput-three-finger-drag.tgz
+# mkdir -p /usr/local/libinput-three-finger-drag
+# pushd /usr/local/libinput-three-finger-drag
+# tar xzf $TMPDIR/libinput-three-finger-drag.tgz
+# popd
 
 # install facetime hd drivers (camera on my macbook air)
 #
@@ -150,7 +142,10 @@ tar xzf epson*.deb.tar.gz
 dpkg -i $TMPDIR/epson*.deb
 apt-get -y update && apt-get -y upgrade
 
+# tidy up
+apt-get -y autoremove --purge
+
 # reboot
 echo "Done."
-read -p "Press ENTER to reboot..." nop
-shutdown -r now
+#read -p "Press ENTER to reboot..." nop
+#shutdown -r now
