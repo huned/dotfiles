@@ -6,6 +6,7 @@
 # - make this script idempotent
 # - change swap partition size to 2x RAM
 # - set up user account(s)
+# - see also inline TODOs below
 
 # EOS_VERSION=$(cat /etc/issue.net | cut -d ' ' -f 3)
 # PLATFORM=$(uname -s)
@@ -36,6 +37,9 @@ apt-get -y update && apt-get -y upgrade
 apt-get -y install lib32z1 libbz2-dev libexpat1-dev libffi-dev libreadline-dev libsqlite3-dev libssl-dev unixodbc-dev zlib1g-dev
 apt-get -y install bat build-essential bzip2 curl docker.io fzf jq ranger ripgrep sqlite3 tmux tree unzip wget zip
 
+# install kernel headers
+apt-get -y install linux-headers-$(uname -r)
+
 # install essential programs
 apt-get -y install chromium-browser dconf-editor firefox transmission
 
@@ -51,9 +55,9 @@ modprobe -r b43 ssb wl brcmfmac brcmsmac bcma
 modprobe wl
 
 # git
-sudo apt -y remove git
-sudo add-apt-repository ppa:git-core/ppa
-sudo apt-get -y update && apt-get -y install git
+apt -y remove git
+add-apt-repository ppa:git-core/ppa
+apt-get -y update && apt-get -y install git
 
 # neovim
 add-apt-repository ppa:neovim-ppa/stable 
@@ -81,20 +85,33 @@ echo "deb http://ppa.launchpad.net/philip.scott/pantheon-tweaks/ubuntu focal mai
 apt-get -y update && apt-get -y install pantheon-tweaks
 
 # zoom
+# 0. Install dependencies
+apt-get -y install libgl1-mesa-glx libegl1-mesa libxcb-xtest0
+# 1. Install zoom
 wget --quiet --timestamping --directory-prefix=$TMPDIR https://zoom.us/client/latest/zoom_amd64.deb
 dpkg -i $TMPDIR/zoom_amd64.deb
-apt-get -y update && apt-get -y upgrade
 
 # github:marsqing/libinput-three-finger-drag
 # See [README](https://github.com/marsqing/libinput-three-finger-drag).
 # The easiest/fastest way is to just download the release binary.
 # NOTE: Do not run this as root. Users should be a member of the "input" group
 # and run this manually or via an automatic mechanism like systemd.
-# wget --quiet --timestamping --directory-prefix=$TMPDIR https://github.com/marsqing/libinput-three-finger-drag/releases/download/0.1/libinput-three-finger-drag.tgz
-# mkdir -p /usr/local/libinput-three-finger-drag
-# pushd /usr/local/libinput-three-finger-drag
-# tar xzf $TMPDIR/libinput-three-finger-drag.tgz
-# popd
+#
+# 0. Install dependencies
+apt-get -y install libxdo3 libinput-tools
+
+# 1. Install libinput-three-finger-drag
+wget --quiet --timestamping --directory-prefix=$TMPDIR https://github.com/marsqing/libinput-three-finger-drag/releases/download/0.1/libinput-three-finger-drag.tgz
+mkdir -p /usr/local/libinput-three-finger-drag
+pushd /usr/local/libinput-three-finger-drag
+tar xzf $TMPDIR/libinput-three-finger-drag.tgz
+popd
+
+# 2. TODO: Add user to 'input' group
+# usermod -a -G input $USER
+
+# 3. TODO: Disable gestures in ElementaryOS 6.0
+# Sysem Settings > Mouse/Touchpad > Gestures > disable everything
 
 # install facetime hd drivers (camera on my macbook air)
 #
@@ -126,6 +143,9 @@ cp *.dat /lib/firmware/facetimehd
 popd
 popd
 
+# 3. TODO Add user to the 'video' group
+# usermod -a -G video $USER
+
 # 3. Install bcwc_pcie (see https://github.com/patjak/bcwc_pcie/wiki/Installation#get-started-on-ubuntu)
 git clone https://github.com/patjak/bcwc_pcie.git $TMPDIR/bcwc_pcie
 pushd $TMPDIR/bcwc_pcie
@@ -139,13 +159,12 @@ popd
 wget --quiet --timestamping --directory-prefix=$TMPDIR https://download2.ebz.epson.net/epsonscan2/common/deb/x64/epsonscan2-bundle-6.6.2.4.x86_64.deb.tar.gz
 pushd $TMPDIR
 tar xzf epson*.deb.tar.gz
-dpkg -i $TMPDIR/epson*.deb
-apt-get -y update && apt-get -y upgrade
+dpkg -i $TMPDIR/epsonscan2-bundle-*.deb/core/epsonscan2_*.deb 
 
 # tidy up
 apt-get -y autoremove --purge
 
 # reboot
 echo "Done."
-#read -p "Press ENTER to reboot..." nop
-#shutdown -r now
+read -p "Press ENTER to reboot..." nop
+shutdown -r now
