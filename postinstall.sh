@@ -6,6 +6,8 @@
 # - make this script idempotent
 # - change swap partition size to 2x RAM
 # - set up user account(s)
+#   - install fzf from git repo `git clone git://github.com/junegunn/fzf ~/.fzf
+#   && ~/.fzf/install`
 # - see also inline TODOs below
 
 # EOS_VERSION=$(cat /etc/issue.net | cut -d ' ' -f 3)
@@ -35,7 +37,7 @@ apt-get -y update && apt-get -y upgrade
 
 # install common development libraries and tools
 apt-get -y install lib32z1 libbz2-dev libexpat1-dev libffi-dev libreadline-dev libsqlite3-dev libssl-dev unixodbc-dev zlib1g-dev
-apt-get -y install bat build-essential bzip2 curl docker.io fzf jq ranger ripgrep sqlite3 tmux tree unzip wget zip
+apt-get -y install bat build-essential bzip2 curl docker.io jq ranger ripgrep sqlite3 tmux tree unzip wget zip
 
 # install kernel headers
 apt-get -y install linux-headers-$(uname -r)
