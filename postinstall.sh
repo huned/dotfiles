@@ -9,6 +9,7 @@
 #   - install fzf from git repo `git clone git://github.com/junegunn/fzf ~/.fzf
 #   && ~/.fzf/install`
 # - see also inline TODOs below
+# - run pulseaudio user systemd script https://askubuntu.com/questions/1146026/problem-with-pulseaudio-at-startup-it-doesnt-start
 
 # EOS_VERSION=$(cat /etc/issue.net | cut -d ' ' -f 3)
 # PLATFORM=$(uname -s)
