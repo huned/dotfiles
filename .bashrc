@@ -202,6 +202,10 @@ alias sysdstopunit="systemctl --user stop"
 # common system commands
 alias less="less -FIRX"
 
+# apt
+alias aupd="sudo apt update && apt list --upgradable"
+alias aupg="sudo apt upgrade"
+
 # bat
 if [ -f "$(which bat)" ]; then
   alias cat="bat"
