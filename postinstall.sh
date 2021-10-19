@@ -149,7 +149,7 @@ popd
 # 3. TODO Add user to the 'video' group
 # usermod -a -G video $USER
 
-# 3. Install bcwc_pcie (see https://github.com/patjak/bcwc_pcie/wiki/Installation#get-started-on-ubuntu)
+# 4. Install bcwc_pcie (see https://github.com/patjak/bcwc_pcie/wiki/Installation#get-started-on-ubuntu)
 git clone https://github.com/patjak/bcwc_pcie.git $TMPDIR/bcwc_pcie
 pushd $TMPDIR/bcwc_pcie
 make && checkinstall -y --nodoc
