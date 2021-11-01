@@ -80,6 +80,7 @@ let g:vim_markdown_conceal = 0          " conceal seems buggy, don't use it
 " For more configuration ideas/examples, see https://gist.github.com/TheCedarPrince/7b9b51af4c146880f17c39407815b594
 let g:floaterm_width = 0.8
 let g:floaterm_height = 0.8
+let g:floaterm_keymap_toggle = '<leader>t'
 "let g:floaterm_keymap_toggle = '<c-t>'
 "let g:floaterm_keymap_new = '<s-c-t>'
 "let g:floaterm_keymap_prev = '<s-c-lt>'
