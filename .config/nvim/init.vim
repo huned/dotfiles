@@ -26,6 +26,9 @@ syntax on                   " syntax highlighting
 set listchars=eol:↵,trail:~,tab:>-,nbsp:␣
 set nolist "don't display listchars by default
 
+" synchronize yank with system clipboard
+set clipboard=unnamedplus
+
 " COLOR SCHEME
 " ============
 "
