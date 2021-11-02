@@ -27,7 +27,8 @@ set listchars=eol:↵,trail:~,tab:>-,nbsp:␣
 set nolist "don't display listchars by default
 
 " synchronize yank with system clipboard
-set clipboard=unnamedplus
+" Don't use this for now b/c it conflicts with visual block mode.
+"set clipboard=unnamed,unnamedplus
 
 " COLOR SCHEME
 " ============
