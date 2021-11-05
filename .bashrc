@@ -218,9 +218,9 @@ alias aupd="sudo apt update && apt list --upgradable"
 alias aupg="sudo apt upgrade"
 
 # bat
-if [ -f "$(which bat)" ]; then
-  alias cat="bat"
-  export MANPAGER="bat"
+if [ -f "$(which batcat)" ]; then
+  alias cat="batcat"
+  export MANPAGER="batcat"
 fi
 
 # ag/rg
