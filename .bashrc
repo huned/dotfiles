@@ -231,9 +231,9 @@ elif [ -f "$(which ag)" ]; then
 fi
 
 # fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-#export FZF_DEFAULT_COMMAND='ag -l --nocolor --ignore .git --hidden -g ""'
+export FZF_DEFAULT_COMMAND='ag -l --nocolor --ignore .git --hidden -g ""'
 export FZF_DEFAULT_OPTS='--layout=reverse --info=inline --border'
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
