@@ -268,3 +268,5 @@ alias hn250status="systemctl --user status daily-hn250-digest.service daily-hn25
 
 source $HOME/.env.secrets
 export $(cut -d= -f1 $HOME/.env.secrets)
+
+export TMPDIR=~/tmp/postinstall
