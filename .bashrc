@@ -170,6 +170,17 @@ xterm*|rxvt*)
     ;;
 esac
 
+# functions
+upv() {
+  local hr=$(date +%H)
+  if [ "$hr" -gt 17 ]; then
+      ln --force -s ~/.config/nvim/init.vim.dark ~/.config/nvim/init.vim
+  else
+      ln --force -s ~/.config/nvim/init.vim.light ~/.config/nvim/init.vim
+  fi
+}
+upv
+
 # git
 alias ga="git add"
 alias gd="git diff"
