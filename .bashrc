@@ -171,15 +171,40 @@ xterm*|rxvt*)
 esac
 
 # functions
-upv() {
-  local hr=$(date +%H)
-  if [ "$hr" -gt 17 ]; then
-      ln --force -s ~/.config/nvim/init.vim.dark ~/.config/nvim/init.vim
-  else
-      ln --force -s ~/.config/nvim/init.vim.light ~/.config/nvim/init.vim
-  fi
+export LIGHTDARKMODE='light'
+setLightDarkModeFn() {
+    local mode='light'
+    local hr=$(date +%H)
+    if [ "$hr" -gt 17 ] || [ "$1" == 'dark' ]; then
+        # after 5pm: dark mode
+        mode='dark'
+    elif [ "$hr" -gt 7 ] || [ "$1" == 'light' ]; then
+        # after 7am: light mode
+        mode='light'
+    fi
+
+    # vim light/dark mode
+    ln --force -s ~/.config/nvim/init.vim.$mode ~/.config/nvim/init.vim
+
+    # batcat light/dark mode
+    # TODO tidy this up
+    if [ "$mode" == 'dark' ]; then
+        export BAT_THEME="Monokai Extended"
+    else
+        export BAT_THEME="Monokai Extended Light"
+    fi
+
+    if [ "$mode" == 'dark' ]; then
+        echo "Dark mode is ON"
+    else
+        echo "Dark mode is OFF"
+    fi
+
+    # "return" value
+    export LIGHTDARKMODE="$mode"
+    # echo -n $mode
 }
-upv
+setLightDarkModeFn
 
 # git
 alias ga="git add"
@@ -220,7 +245,7 @@ alias aupg="sudo apt upgrade"
 # bat
 if [ -f "$(which batcat)" ]; then
   alias cat="batcat"
-  export MANPAGER="batcat"
+  export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 fi
 
 # ag/rg
