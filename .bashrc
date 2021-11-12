@@ -204,6 +204,8 @@ setLightDarkModeFn() {
     export LIGHTDARKMODE="$mode"
     # echo -n $mode
 }
+alias dark="setLightDarkModeFn dark"
+alias light="setLightDarkModeFn light"
 setLightDarkModeFn
 
 # git
