@@ -110,13 +110,6 @@ pushd /usr/local/libinput-three-finger-drag
 tar xzf $TMPDIR/libinput-three-finger-drag.tgz
 popd
 
-# Install catts
-wget https://small-tech.org/downloads/catts/1.0.1/libgala-catts.so -O $TMPDIR/libgala-catts.so
-bash -lic "test \"\$(sha256sum $TMPDIR/libgala-catts.so)\" = '7ab574482f93d2b4881788631893a540bae2f64838d82cfcbadb9d8c74c11922 $TMPDIR/libgala-catts.so' && echo 'Download OK.' || echo '🛑 STOP. Security error. File has been tampered with. DO NOT PROCEED.'" && exit 1
-mv $TMPDIR/libgala-catts.so /usr/lib/x86_64-linux-gnu/gala/plugins
-chown root:root /usr/lib/x86_64-linux-gnu/gala/plugins/libgala-catts.so
-# gala --replace &
-
 # 2. TODO: Add user to 'input' group
 # usermod -a -G input $USER
 
