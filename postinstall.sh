@@ -75,6 +75,8 @@ apt-get -y update && apt-get -y install beekeeper-studio
 add-apt-repository ppa:apandada1/foliate
 apt-get -y update && apt-get -y install foliate
 
+# TODO install peek via ppa (records animated gifs)
+
 # insync
 # NOTE: use ubuntu/focal because ElementaryOS 6.0 is based on Ubuntu/Focal.
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
