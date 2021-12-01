@@ -8,3 +8,7 @@
 	default = simple
 [init]
 	defaultBranch = main
+[user]
+	email = 24231+huned@users.noreply.github.com
+[pull]
+	rebase = true
