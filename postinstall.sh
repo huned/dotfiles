@@ -10,6 +10,11 @@
 #   && ~/.fzf/install`
 # - see also inline TODOs below
 # - run pulseaudio user systemd script https://askubuntu.com/questions/1146026/problem-with-pulseaudio-at-startup-it-doesnt-start
+# - nvm
+#  - npm install -g typescript
+#  - npm install -g ts-server
+#  - npm install -g ts-standard
+# - pyenv
 
 # EOS_VERSION=$(cat /etc/issue.net | cut -d ' ' -f 3)
 # PLATFORM=$(uname -s)
