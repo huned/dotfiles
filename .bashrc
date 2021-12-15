@@ -170,44 +170,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-# functions
-export LIGHTDARKMODE='light'
-setLightDarkModeFn() {
-    local mode='light'
-    local hr=$(date +%H)
-    if [ "$hr" -gt 17 ] || [ "$1" == 'dark' ]; then
-        # after 5pm: dark mode
-        mode='dark'
-    elif [ "$hr" -gt 7 ] || [ "$1" == 'light' ]; then
-        # after 7am: light mode
-        mode='light'
-    fi
-
-    # vim light/dark mode
-    ln --force -s ~/.config/nvim/init.vim.$mode ~/.config/nvim/init.vim
-
-    # batcat light/dark mode
-    # TODO tidy this up
-    if [ "$mode" == 'dark' ]; then
-        export BAT_THEME="Monokai Extended"
-    else
-        export BAT_THEME="Monokai Extended Light"
-    fi
-
-    if [ "$mode" == 'dark' ]; then
-        echo "Dark mode is ON"
-    else
-        echo "Dark mode is OFF"
-    fi
-
-    # "return" value
-    export LIGHTDARKMODE="$mode"
-    # echo -n $mode
-}
-alias dark="setLightDarkModeFn dark"
-alias light="setLightDarkModeFn light"
-setLightDarkModeFn
-
 # git
 alias ga="git add"
 alias gd="git diff"
