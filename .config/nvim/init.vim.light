@@ -41,12 +41,15 @@ colorscheme one
 " OTHER INSTALLED PLUGINS
 " =======================
 "
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
+
 " Enforce standard js style
 " https://vimawesome.com/plugin/ale
 " https://vimawesome.com/plugin/standard
-let g:ale_linters = {'javascript': ['standard']}
-let g:ale_fixers = {'javascript': ['standard']}
-"
+let g:ale_linters = {'javascript': ['standard'], 'typescript': ['eslint']}
+let g:ale_fixers = {'javascript': ['standard'], 'typescript': ['eslint']}
+
 " https://github.com/junegunn/fzf
 " https://github.com/junegunn/fzf.vim
 "Defined in environment
