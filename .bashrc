@@ -177,6 +177,7 @@ alias gp="git pull"
 alias gs="git status"
 alias gl="git log"
 alias gc="git commit -v"
+alias gist="gist-paste"
 
 # docker
 alias dps="docker ps -a"
@@ -214,11 +215,11 @@ if [ -f "$(which batcat)" ]; then
 fi
 
 # ag/rg
-if [ -f "$(which rg)" ]; then
-    alias grep="rg"
-elif [ -f "$(which ag)" ]; then
-    alias grep="ag"
-fi
+#if [ -f "$(which rg)" ]; then
+#    alias grep="rg"
+#elif [ -f "$(which ag)" ]; then
+#    alias grep="ag"
+#fi
 
 # fzf
 export FZF_DEFAULT_COMMAND='ag -l --nocolor --ignore .git --hidden -g ""'
