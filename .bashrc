@@ -249,6 +249,9 @@ export USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 
 # projects
 export PROJECTS_DIR="$HOME/work"
 
+# huned's janky dark mode script (TM)
+. "${PROJECTS_DIR}/dotfiles/darkmode/darkmode.sh"
+
 # projects/hn250
 alias hn250="~/bin/daily-hn250-digest.sh"
 alias hn250status="systemctl --user status daily-hn250-digest.service daily-hn250-digest.timer"
