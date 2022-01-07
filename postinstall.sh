@@ -109,14 +109,14 @@ dpkg -i $TMPDIR/zoom_amd64.deb
 # and run this manually or via an automatic mechanism like systemd.
 #
 # 0. Install dependencies
-apt-get -y install libxdo3 libinput-tools
-
-# 1. Install libinput-three-finger-drag
-wget --quiet --timestamping --directory-prefix=$TMPDIR https://github.com/marsqing/libinput-three-finger-drag/releases/download/0.1/libinput-three-finger-drag.tgz
-mkdir -p /usr/local/libinput-three-finger-drag
-pushd /usr/local/libinput-three-finger-drag
-tar xzf $TMPDIR/libinput-three-finger-drag.tgz
-popd
+#apt-get -y install libxdo3 libinput-tools
+#
+## 1. Install libinput-three-finger-drag
+#wget --quiet --timestamping --directory-prefix=$TMPDIR https://github.com/marsqing/libinput-three-finger-drag/releases/download/0.1/libinput-three-finger-drag.tgz
+#mkdir -p /usr/local/libinput-three-finger-drag
+#pushd /usr/local/libinput-three-finger-drag
+#tar xzf $TMPDIR/libinput-three-finger-drag.tgz
+#popd
 
 # 2. TODO: Add user to 'input' group
 # usermod -a -G input $USER
