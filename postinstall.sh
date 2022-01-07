@@ -15,6 +15,7 @@
 #  - npm install -g ts-server
 #  - npm install -g ts-standard
 # - pyenv
+# - add user to lpadmin group: sudo usermod -aG lpadmin <username>
 
 # EOS_VERSION=$(cat /etc/issue.net | cut -d ' ' -f 3)
 # PLATFORM=$(uname -s)
@@ -43,7 +44,7 @@ apt-get -y update && apt-get -y upgrade
 
 # install common development libraries and tools
 apt-get -y install lib32z1 libbz2-dev libexpat1-dev libffi-dev libreadline-dev libsqlite3-dev libssl-dev unixodbc-dev zlib1g-dev
-apt-get -y install bat build-essential bzip2 curl docker.io jq pv ranger ripgrep sqlite3 tmux tree unzip wget zip
+apt-get -y install bat build-essential bzip2 curl docker.io jq net-tools pv ranger ripgrep sqlite3 tmux tree unzip wget zip
 
 # install kernel headers
 apt-get -y install linux-headers-$(uname -r)
