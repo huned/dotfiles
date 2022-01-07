@@ -143,3 +143,5 @@ light() {
 export -f setDarkMode
 export -f dark
 export -f light
+
+set +a
