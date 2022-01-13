@@ -52,6 +52,10 @@ apt-get -y install linux-headers-$(uname -r)
 # install essential programs
 apt-get -y install chromium-browser dconf-editor firefox transmission
 
+# TODO
+# - krita, deja dup, wps office, easydocs, vlc, cheese
+#
+
 # install broadcom wifi drivers (wifi on 2013 macbook air)
 #
 # TODO only run if we detect the broadcom wireless hardware
