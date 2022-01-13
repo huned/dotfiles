@@ -211,6 +211,7 @@ alias aupg="sudo apt upgrade"
 if [ -f "$(which batcat)" ]; then
   alias cat="batcat"
   export BAT_STYLE="plain"
+  export BAT_THEME="Monokai Extended Light"
   export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 fi
 
@@ -244,7 +245,7 @@ eval "$(pyenv init --path)"
 
 # editor
 export EDITOR=vim
-export USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
+#export USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
 
 # projects
 export PROJECTS_DIR="$HOME/work"
