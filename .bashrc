@@ -251,11 +251,10 @@ export EDITOR=vim
 export PROJECTS_DIR="$HOME/work"
 
 # huned's janky dark mode script (TM)
-. "${PROJECTS_DIR}/dotfiles/darkmode/darkmode.sh"
+[ -s "${PROJECTS_DIR}/dotfiles/darkmode/darkmode.sh" ] && . "${PROJECTS_DIR}/dotfiles/darkmode/darkmode.sh"
 
 # projects/hn250
 alias hn250="~/bin/daily-hn250-digest.sh"
 alias hn250status="systemctl --user status daily-hn250-digest.service daily-hn250-digest.timer"
 
 source $HOME/.env.secrets
-export $(cut -d= -f1 $HOME/.env.secrets)
