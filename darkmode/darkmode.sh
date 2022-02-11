@@ -91,6 +91,9 @@ setDarkMode() {
     fi
 
     # Then update application states.
+    # TODO separate environment variables from commands because we always
+    # want to set env vars when sourcing this script.
+    # TODO also want to export the darkmode state into some kinda variable.
 
     if [[ "${mode}" =~ "dark" ]]; then
         # ElementaryOS appearance (set to "dark")
