@@ -89,7 +89,7 @@ alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+#alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -170,6 +170,8 @@ xterm*|rxvt*)
     ;;
 esac
 
+export PATH="$HOME/bin:$PATH"
+
 # git
 alias ga="git add"
 alias gd="git diff"
@@ -180,14 +182,14 @@ alias gc="git commit -v"
 alias gist="gist-paste"
 
 # docker
-alias dps="docker ps -a"
-alias dprune="docker container prune --force && docker image prune --force"
-alias dlsimg="docker image ls"
-alias dlscont="docker container ls"
-alias dstart="docker container run"
-alias dtmp="docker container run --rm"
-alias dexec="docker exec"
-alias dshell="docker exec --interactive --tty"
+#alias dps="docker ps -a"
+#alias dprune="docker container prune --force && docker image prune --force"
+#alias dlsimg="docker image ls"
+#alias dlscont="docker container ls"
+#alias dstart="docker container run"
+#alias dtmp="docker container run --rm"
+#alias dexec="docker exec"
+#alias dshell="docker exec --interactive --tty"
 
 # systemd
 alias sysdlsunits="systemctl --user list-unit-files"
@@ -200,27 +202,28 @@ alias sysdlsfailed="systemctl --user --failed --all"
 alias sysdstartunit="systemctl --user reload-or-restart"
 alias sysdstopunit="systemctl --user stop"
 
+#alias restartx="sudo systemctl restart display-manager"
+
 # common system commands
 alias less="less -FIRX"
 
 # apt
-alias aupd="sudo apt update && apt list --upgradable"
-alias aupg="sudo apt upgrade"
+alias aupg="sudo apt update && apt list --upgradable && sudo apt upgrade"
 
 # bat
 if [ -f "$(which batcat)" ]; then
   alias cat="batcat"
   export BAT_STYLE="plain"
-  export BAT_THEME="Monokai Extended Light"
+  export BAT_THEME="Solarized (dark)" # see batcat --list-themes
   export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 fi
 
 # ag/rg
-#if [ -f "$(which rg)" ]; then
-#    alias grep="rg"
-#elif [ -f "$(which ag)" ]; then
-#    alias grep="ag"
-#fi
+if [ -f "$(which rg)" ]; then
+    alias grep="rg"
+elif [ -f "$(which ag)" ]; then
+    alias grep="ag"
+fi
 
 # fzf
 export FZF_DEFAULT_COMMAND='ag -l --nocolor --ignore .git --hidden -g ""'
@@ -234,24 +237,29 @@ export NVM_DIR="$HOME/.nvm"
 nvm use lts/gallium
 
 # rbenv
-export RBENV_DIR="$HOME/.rbenv"
-export PATH="${RBENV_DIR}/bin:$PATH"
-eval "$(rbenv init - bash)"
+#export RBENV_DIR="$HOME/.rbenv"
+#export PATH="${RBENV_DIR}/bin:$PATH"
+#eval "$(rbenv init - bash)"
 
 # pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="${PYENV_ROOT}/bin:${PATH}"
-eval "$(pyenv init --path)"
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="${PYENV_ROOT}/bin:${PATH}"
+#eval "$(pyenv init --path)"
+
+# adb/fastboot
+#if [ -d "$HOME/work/adb-fastboot/platform-tools" ]; then
+# export PATH="$HOME/work/adb-fastboot/platform-tools:$PATH"
+#fi
 
 # editor
 export EDITOR=vim
 #export USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
 
+# GOG games use i386 libs
+export LD_LIBRARY_PATH="/usr/lib/i386-linux-gnu:$LD_LIBRARY_PATH"
+
 # projects
 export PROJECTS_DIR="$HOME/work"
-
-# huned's janky dark mode script (TM)
-[ -s "${PROJECTS_DIR}/dotfiles/darkmode/darkmode.sh" ] && . "${PROJECTS_DIR}/dotfiles/darkmode/darkmode.sh"
 
 # projects/hn250
 alias hn250="~/bin/daily-hn250-digest.sh"
