@@ -2,6 +2,9 @@
 # Post-install script for ElementaryOS. Run it as root via sudo.
 #
 # TODOs
+# - 2/10/2023
+#   - separate camera and wifi setup
+#   - avoid downloading: store local copies of repos and pre-extracted firmware
 # - bail out if platform/uname doesn't meet expected value
 # - make this script idempotent
 # - change swap partition size to 2x RAM
@@ -16,6 +19,19 @@
 #  - npm install -g ts-standard
 # - pyenv
 # - add user to lpadmin group: sudo usermod -aG lpadmin <username>
+# - add user to video group: sudo usermod -aG video <username>
+# - figure out which apps to install via flathub
+#
+# see also these notes:
+#- backup from old computer
+#  - create user account and add user to groups like lpadmin, video
+#  - clean up/delete unnecessary stuff
+#  - run and test a full backup
+#  - download wifi and camera stuff
+#  - move background jobs to a separate machine (pi?)
+#  - use tar to preserve filesystem permissions (don't copy files one by one)
+#- sudo apt install nvim silversearcher-ag jq parallel bat sqlite3 restic
+#- flathub install firefox flatseal libreoffice dejadup beekeeper-studio epsonscan2
 
 # EOS_VERSION=$(cat /etc/issue.net | cut -d ' ' -f 3)
 # PLATFORM=$(uname -s)
