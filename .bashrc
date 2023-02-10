@@ -208,7 +208,7 @@ alias sysdstopunit="systemctl --user stop"
 alias less="less -FIRX"
 
 # apt
-alias aupg="sudo apt update && apt list --upgradable && sudo apt upgrade"
+alias aupg="sudo apt update && apt list --upgradable -a && sudo apt upgrade"
 
 # bat
 if [ -f "$(which batcat)" ]; then
