@@ -30,7 +30,7 @@
 #  - download wifi and camera stuff
 #  - move background jobs to a separate machine (pi?)
 #  - use tar to preserve filesystem permissions (don't copy files one by one)
-#- sudo apt install nvim silversearcher-ag jq parallel bat sqlite3 restic
+#- sudo apt install nvim silversearcher-ag jq parallel bat sqlite3 restic imagemagick
 #- flathub install firefox flatseal libreoffice dejadup beekeeper-studio epsonscan2
 
 # EOS_VERSION=$(cat /etc/issue.net | cut -d ' ' -f 3)
