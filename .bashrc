@@ -61,10 +61,12 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w \$ '
 fi
+#PS1="\D{%Y-%m-%d %H:%M:%S ${PS1}"
+
 unset color_prompt force_color_prompt
 
 # enable color support of ls and also add handy aliases
@@ -234,12 +236,13 @@ export FZF_DEFAULT_OPTS='--layout=reverse --info=inline --border'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-nvm use lts/gallium
+nvm use lts/*
 
 # rbenv
-#export RBENV_DIR="$HOME/.rbenv"
-#export PATH="${RBENV_DIR}/bin:$PATH"
-#eval "$(rbenv init - bash)"
+export RBENV_DIR="$HOME/.rbenv"
+export PATH="${RBENV_DIR}/bin:$PATH"
+eval "$(~/.rbenv/bin/rbenv init - bash)"
+
 
 # pyenv
 #export PYENV_ROOT="$HOME/.pyenv"
