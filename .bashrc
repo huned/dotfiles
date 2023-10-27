@@ -238,6 +238,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm use lts/*
 
+# dvm
+export DVM_DIR="/home/huned/.dvm"
+export PATH="$DVM_DIR/bin:$PATH"
+
 # rbenv
 export RBENV_DIR="$HOME/.rbenv"
 export PATH="${RBENV_DIR}/bin:$PATH"
