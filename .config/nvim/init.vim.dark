@@ -33,10 +33,10 @@ set nolist "don't display listchars by default
 " COLOR SCHEME
 " ============
 "
-" https://github.com/rakr/vim-one
+" https://github.com/overcache/NeoSolarized
 set termguicolors " assume truecolor-abled terminal
-set background=dark
-colorscheme one
+"set background=light "light or dark -- comment out to let neovim decide?
+colorscheme NeoSolarized
 
 " OTHER INSTALLED PLUGINS
 " =======================
