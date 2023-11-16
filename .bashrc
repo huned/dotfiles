@@ -241,7 +241,7 @@ nvm use lts/*
 # dvm and deno
 export DVM_DIR="/home/huned/.dvm"
 export PATH="$DVM_DIR/bin:$PATH"
-export PATH="~/.deno/bin:$PATH"
+export PATH="$HOME/.deno/bin:$PATH"
 
 # rbenv
 export RBENV_DIR="$HOME/.rbenv"
@@ -255,9 +255,9 @@ eval "$(~/.rbenv/bin/rbenv init - bash)"
 #eval "$(pyenv init --path)"
 
 # adb/fastboot
-#if [ -d "$HOME/work/adb-fastboot/platform-tools" ]; then
-# export PATH="$HOME/work/adb-fastboot/platform-tools:$PATH"
-#fi
+#export ANDROID_HOME="$HOME/work/android-sdk"
+#export JAVA_HOME="$ANDROID_HOME/jbr_jcef-17.0.9-linux-x64-b1087.3"
+#export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
 
 # editor
 export EDITOR=vim
