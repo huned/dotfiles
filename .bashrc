@@ -204,6 +204,9 @@ alias sysdlsfailed="systemctl --user --failed --all"
 alias sysdstartunit="systemctl --user reload-or-restart"
 alias sysdstopunit="systemctl --user stop"
 
+# tabula (extract tables from PDFs)
+alias tabula="pushd ~/work/forks/tabula && java -Dfile.encoding=utf-8 -Xms256M -Xmx1024M -jar tabula.jar && popd"
+
 #alias restartx="sudo systemctl restart display-manager"
 
 # common system commands
