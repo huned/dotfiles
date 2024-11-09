@@ -7,39 +7,15 @@
 [submodule ".local/share/nvim/site/pack/huned/start/ale"]
 	path = .local/share/nvim/site/pack/huned/start/ale
 	url = https://github.com/w0rp/ale
-[submodule ".local/share/nvim/site/pack/huned/start/vim-commentary"]
-	path = .local/share/nvim/site/pack/huned/start/vim-commentary
-	url = https://github.com/tpope/vim-commentary
 [submodule ".local/share/nvim/site/pack/huned/start/indentline"]
 	path = .local/share/nvim/site/pack/huned/start/indentline
 	url = https://github.com/yggdroot/indentline
-[submodule ".local/share/nvim/site/pack/huned/start/vim-floaterm"]
-	path = .local/share/nvim/site/pack/huned/start/vim-floaterm
-	url = https://github.com/voldikss/vim-floaterm
 [submodule ".local/share/nvim/site/pack/huned/start/vim-surround"]
 	path = .local/share/nvim/site/pack/huned/start/vim-surround
 	url = https://github.com/tpope/vim-surround
-[submodule ".local/share/nvim/site/pack/huned/start/nerdtree"]
-	path = .local/share/nvim/site/pack/huned/start/nerdtree
-	url = https://github.com/scrooloose/nerdtree
-[submodule ".local/share/nvim/site/pack/huned/start/ranger.vim"]
-	path = .local/share/nvim/site/pack/huned/start/ranger.vim
-	url = https://github.com/francoiscabrol/ranger.vim
-[submodule ".local/share/nvim/site/pack/huned/start/vim-grepper"]
-	path = .local/share/nvim/site/pack/huned/start/vim-grepper
-	url = https://github.com/mhinz/vim-grepper
-[submodule ".local/share/nvim/site/pack/huned/start/tabular"]
-	path = .local/share/nvim/site/pack/huned/start/tabular
-	url = git://github.com/godlygeek/tabular.git
-[submodule ".local/share/nvim/site/pack/huned/start/standard"]
-	path = .local/share/nvim/site/pack/huned/start/standard
-	url = https://github.com/feross/standard
 [submodule ".local/share/nvim/site/pack/huned/start/fzf.vim"]
 	path = .local/share/nvim/site/pack/huned/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
 [submodule ".local/share/nvim/site/pack/huned/start/vim-one"]
 	path = .local/share/nvim/site/pack/huned/start/vim-one
 	url = https://github.com/rakr/vim-one
-[submodule ".local/share/nvim/site/pack/huned/start/goyo.vim"]
-	path = .local/share/nvim/site/pack/huned/start/goyo.vim
-	url = https://github.com/junegunn/goyo.vim

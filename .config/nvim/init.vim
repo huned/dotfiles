@@ -1,10 +1,7 @@
 " TODOs
 " - TBD key mappings:
 "   - tabnew, tabnext, tabprevious
-"   - FloatermNew, FloatermNext, FloatermPrev
-" - remove plugins: nerdtree, ranger
 " - autocomplete (deoplete? + ultisnips?)
-" - tpope/goyo.vim
 set nocompatible            " disable compatibility to old-time vi
 set showmatch               " show matching brackets.
 set ignorecase              " case insensitive matching
@@ -17,7 +14,7 @@ set shiftwidth=2            " width for autoindents
 set autoindent              " indent a new line the same amount as the line just typed
 set number                  " add line numbers
 set wildmode=longest,list   " get bash-like tab completions
-set textwidth=80            " set 80 column text width (to reflow text)
+set textwidth=100           " set 80 column text width (to reflow text)
 set cc=80                   " set an 80 column border for good coding style
 filetype plugin indent on   " allows auto-indenting depending on file type
 syntax on                   " syntax highlighting
@@ -36,7 +33,7 @@ set nolist "don't display listchars by default
 " https://github.com/overcache/NeoSolarized
 set termguicolors " assume truecolor-abled terminal
 "set background=light "light or dark -- comment out to let neovim decide?
-colorscheme NeoSolarized
+colorscheme one
 
 " OTHER INSTALLED PLUGINS
 " =======================
@@ -46,9 +43,8 @@ let g:ale_linters_explicit = 1
 
 " Enforce standard js style
 " https://vimawesome.com/plugin/ale
-" https://vimawesome.com/plugin/standard
-let g:ale_linters = {'javascript': ['standard'], 'typescript': ['eslint']}
-let g:ale_fixers = {'javascript': ['standard'], 'typescript': ['eslint']}
+let g:ale_linters = {'typescript': ['eslint']}
+let g:ale_fixers = {'typescript': ['eslint']}
 
 " https://github.com/junegunn/fzf
 " https://github.com/junegunn/fzf.vim
@@ -79,21 +75,3 @@ let g:vim_markdown_folding_disabled = 1 " disable header folding
 let g:vim_markdown_conceal = 0          " conceal seems buggy, don't use it
 "let g:tex_conceal = ""                  " disable math tex conceal feature
 "let g:vim_markdown_math = 1
-
-" https://github.com/voldikss/vim-floaterm
-" For more configuration ideas/examples, see https://gist.github.com/TheCedarPrince/7b9b51af4c146880f17c39407815b594
-let g:floaterm_width = 0.8
-let g:floaterm_height = 0.8
-let g:floaterm_keymap_toggle = '<leader>t'
-"let g:floaterm_keymap_toggle = '<c-t>'
-"let g:floaterm_keymap_new = '<s-c-t>'
-"let g:floaterm_keymap_prev = '<s-c-lt>'
-"let g:floaterm_keymap_next = '<s-c-gt>'
-
-" https://github.com/mhinz/vim-grepper 
-"nnoremap <c-/> :Grepper<CR>
-nnoremap <leader>g :Grepper -tool git<cr>
-nnoremap <leader>G :Grepper -tool ag<cr>
-"
-" https://github.com/godlygeek/tabular
-" no additional configuration
