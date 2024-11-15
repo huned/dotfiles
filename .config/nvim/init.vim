@@ -61,7 +61,7 @@ nnoremap <c-p> :Files<CR>
 " https://github.com/tpope/vim-surround
 " no additional configuration
 
-" netrw
+" netrw - vim's built-in file browser
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 3
@@ -75,3 +75,6 @@ let g:vim_markdown_folding_disabled = 1 " disable header folding
 let g:vim_markdown_conceal = 0          " conceal seems buggy, don't use it
 "let g:tex_conceal = ""                  " disable math tex conceal feature
 "let g:vim_markdown_math = 1
+
+" https://github.com/David-Kunz/gen.nvim
+lua require('gen').setup({ model = "qwen2.5-coder:1.5b" })
