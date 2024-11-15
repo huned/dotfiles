@@ -93,6 +93,8 @@ alias l='ls -CF'
 #   sleep 10; alert
 #alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+alias serve8000="echo -n \"your ip is: \"; hostname -i; python3 -m http.server 8000 --directory"
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -258,9 +260,9 @@ eval "$(~/.rbenv/bin/rbenv init - bash)"
 #eval "$(pyenv init --path)"
 
 # adb/fastboot
-#export ANDROID_HOME="$HOME/work/android-sdk"
-#export JAVA_HOME="$ANDROID_HOME/jbr_jcef-17.0.9-linux-x64-b1087.3"
-#export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
+export ANDROID_HOME="$HOME/work/android-sdk"
+export JAVA_HOME="$ANDROID_HOME/jbr_jcef-17.0.9-linux-x64-b1087.3"
+export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
 
 # editor
 export EDITOR=vim
