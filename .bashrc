@@ -93,8 +93,6 @@ alias l='ls -CF'
 #   sleep 10; alert
 #alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-alias serve8000="echo -n \"your ip is: \"; hostname -i; python3 -m http.server 8000 --directory"
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -186,6 +184,7 @@ alias gc="git commit -v"
 alias gist="gist-paste"
 
 # docker
+# DEPRECATED 11/30/2024: why all the unnecessary complexity with docker?
 #alias dps="docker ps -a"
 #alias dprune="docker container prune --force && docker image prune --force"
 #alias dlsimg="docker image ls"
@@ -196,30 +195,37 @@ alias gist="gist-paste"
 #alias dshell="docker exec --interactive --tty"
 
 # systemd
-alias sysdlsunits="systemctl --user list-unit-files"
-alias sysdlstimers="systemctl --user list-timers --all"
-alias sysdls="sysdlsunits; sysdlstimers"
-alias sysdstatus="systemctl --user status"
-alias sysdlog="journalctl --user -xef"
-alias sysdreload="systemctl --user daemon-reload"
-alias sysdlsfailed="systemctl --user --failed --all"
-alias sysdstartunit="systemctl --user reload-or-restart"
-alias sysdstopunit="systemctl --user stop"
-
-# tabula (extract tables from PDFs)
-alias tabula="pushd ~/work/forks/tabula && java -Dfile.encoding=utf-8 -Xms256M -Xmx1024M -jar tabula.jar && popd"
-
-#alias restartx="sudo systemctl restart display-manager"
+# DEPRECATED 11/30/2024: why all the unnecessary complexity with systemd?
+#alias sysdlsunits="systemctl --user list-unit-files"
+#alias sysdlstimers="systemctl --user list-timers --all"
+#alias sysdls="sysdlsunits; sysdlstimers"
+#alias sysdstatus="systemctl --user status"
+#alias sysdlog="journalctl --user -xef"
+#alias sysdreload="systemctl --user daemon-reload"
+#alias sysdlsfailed="systemctl --user --failed --all"
+#alias sysdstartunit="systemctl --user reload-or-restart"
+#alias sysdstopunit="systemctl --user stop"
 
 # common system commands
 alias less="less -FIRX"
 
+# editor
+export EDITOR=$(which nvim || which vim || which vi)
+alias vi="$EDITOR"
+
 # apt
 alias aupg="sudo apt update && apt list --upgradable -a && sudo apt upgrade"
 
+# serve a directory via http://localhost:8000
+alias serve8000="echo -n \"your ip is: \"; hostname -i; python3 -m http.server 8000 --directory"
+
+# local backup of home directory
+alias gobackup="sudo mount /dev/sdb1 /media/external-disk && mount | grep \"/media/external-disk\" && rsync -avz \"$HOME\" \"/media/external-disk/backup/$HOME\""
+
 # bat
 if [ -f "$(which batcat)" ]; then
-  alias cat="batcat"
+  alias cat="$(which batcat)"
+  alias bat="$(which batcat)"
   export BAT_STYLE="plain"
   export BAT_THEME="Solarized (dark)" # see batcat --list-themes
   export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
@@ -227,9 +233,9 @@ fi
 
 # ag/rg
 if [ -f "$(which rg)" ]; then
-    alias grep="rg"
+    alias grep="$(which rg)"
 elif [ -f "$(which ag)" ]; then
-    alias grep="ag"
+    alias grep="$(which ag)"
 fi
 
 # fzf
@@ -244,15 +250,14 @@ export NVM_DIR="$HOME/.nvm"
 nvm use lts/*
 
 # dvm and deno
-export DVM_DIR="/home/huned/.dvm"
+export DVM_DIR="$HOME/.dvm"
 export PATH="$DVM_DIR/bin:$PATH"
 export PATH="$HOME/.deno/bin:$PATH"
 
 # rbenv
-export RBENV_DIR="$HOME/.rbenv"
-export PATH="${RBENV_DIR}/bin:$PATH"
-eval "$(~/.rbenv/bin/rbenv init - bash)"
-
+#export RBENV_DIR="$HOME/.rbenv"
+#export PATH="${RBENV_DIR}/bin:$PATH"
+#eval "$(~/.rbenv/bin/rbenv init - bash)"
 
 # pyenv
 #export PYENV_ROOT="$HOME/.pyenv"
@@ -260,16 +265,19 @@ eval "$(~/.rbenv/bin/rbenv init - bash)"
 #eval "$(pyenv init --path)"
 
 # adb/fastboot
-export ANDROID_HOME="$HOME/work/android-sdk"
-export JAVA_HOME="$ANDROID_HOME/jbr_jcef-17.0.9-linux-x64-b1087.3"
-export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
+#export ANDROID_HOME="$HOME/work/android-sdk"
+#export JAVA_HOME="$ANDROID_HOME/jbr_jcef-17.0.9-linux-x64-b1087.3"
+#export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
 
-# editor
-export EDITOR=nvim
+# tabula (extract tables from PDFs)
+#alias tabula="pushd ~/work/forks/tabula && java -Dfile.encoding=utf-8 -Xms256M -Xmx1024M -jar tabula.jar && popd"
+
+#alias restartx="sudo systemctl restart display-manager"
+
 #export USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
 
 # GOG games use i386 libs
-export LD_LIBRARY_PATH="/usr/lib/i386-linux-gnu:$LD_LIBRARY_PATH"
+#export LD_LIBRARY_PATH="/usr/lib/i386-linux-gnu:$LD_LIBRARY_PATH"
 
 # projects
 export PROJECTS_DIR="$HOME/work"
