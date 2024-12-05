@@ -229,6 +229,7 @@ if [ -f "$(which batcat)" ]; then
   export BAT_STYLE="plain"
   export BAT_THEME="Solarized (dark)" # see batcat --list-themes
   export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+  export MANROFFOPT="-c"
 fi
 
 # ag/rg
@@ -244,15 +245,15 @@ export FZF_DEFAULT_OPTS='--layout=reverse --info=inline --border'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-nvm use lts/*
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#nvm use lts/*
 
 # dvm and deno
-export DVM_DIR="$HOME/.dvm"
-export PATH="$DVM_DIR/bin:$PATH"
-export PATH="$HOME/.deno/bin:$PATH"
+#export DVM_DIR="$HOME/.dvm"
+#export PATH="$DVM_DIR/bin:$PATH"
+#export PATH="$HOME/.deno/bin:$PATH"
 
 # rbenv
 #export RBENV_DIR="$HOME/.rbenv"
