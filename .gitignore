@@ -1,7 +1,2 @@
 .DS_Store
 tmp
-private
-
-# chef
-cache
-local-mode-cache
