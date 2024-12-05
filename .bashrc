@@ -238,4 +238,4 @@ export FZF_DEFAULT_OPTS='--layout=reverse --info=inline --border'
 
 #alias restartx="sudo systemctl restart display-manager"
 
-source $HOME/.env.secrets
+[ -f ~/.env.secrets ] && source ~/.env.secrets
