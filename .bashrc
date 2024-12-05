@@ -216,12 +216,6 @@ alias vi="$EDITOR"
 # apt
 alias aupg="sudo apt update && apt list --upgradable -a && sudo apt upgrade"
 
-# serve a directory via http://localhost:8000
-alias serve8000="echo -n \"your ip is: \"; hostname -i; python3 -m http.server 8000 --directory"
-
-# local backup of home directory
-alias gobackup="sudo mount /dev/sdb1 /media/external-disk && rsync -avz \"$HOME\" \"/media/external-disk/backup/$HOME\" && sudo umount /media/external"
-
 # bat
 if [ -f "$(which batcat)" ]; then
   alias cat="$(which batcat)"
@@ -232,10 +226,8 @@ if [ -f "$(which batcat)" ]; then
   export MANROFFOPT="-c"
 fi
 
-# ag/rg
-if [ -f "$(which rg)" ]; then
-    alias grep="$(which rg)"
-elif [ -f "$(which ag)" ]; then
+# ag
+if [ -f "$(which ag)" ]; then
     alias grep="$(which ag)"
 fi
 
@@ -244,43 +236,6 @@ export FZF_DEFAULT_COMMAND='ag -l --nocolor --ignore .git --hidden -g ""'
 export FZF_DEFAULT_OPTS='--layout=reverse --info=inline --border'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# nvm
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-#nvm use lts/*
-
-# dvm and deno
-#export DVM_DIR="$HOME/.dvm"
-#export PATH="$DVM_DIR/bin:$PATH"
-#export PATH="$HOME/.deno/bin:$PATH"
-
-# rbenv
-#export RBENV_DIR="$HOME/.rbenv"
-#export PATH="${RBENV_DIR}/bin:$PATH"
-#eval "$(~/.rbenv/bin/rbenv init - bash)"
-
-# pyenv
-#export PYENV_ROOT="$HOME/.pyenv"
-#export PATH="${PYENV_ROOT}/bin:${PATH}"
-#eval "$(pyenv init --path)"
-
-# adb/fastboot
-#export ANDROID_HOME="$HOME/work/android-sdk"
-#export JAVA_HOME="$ANDROID_HOME/jbr_jcef-17.0.9-linux-x64-b1087.3"
-#export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
-
-# tabula (extract tables from PDFs)
-#alias tabula="pushd ~/work/forks/tabula && java -Dfile.encoding=utf-8 -Xms256M -Xmx1024M -jar tabula.jar && popd"
-
 #alias restartx="sudo systemctl restart display-manager"
-
-#export USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
-
-# GOG games use i386 libs
-#export LD_LIBRARY_PATH="/usr/lib/i386-linux-gnu:$LD_LIBRARY_PATH"
-
-# projects
-export PROJECTS_DIR="$HOME/work"
 
 source $HOME/.env.secrets
