@@ -220,7 +220,7 @@ alias aupg="sudo apt update && apt list --upgradable -a && sudo apt upgrade"
 alias serve8000="echo -n \"your ip is: \"; hostname -i; python3 -m http.server 8000 --directory"
 
 # local backup of home directory
-alias gobackup="sudo mount /dev/sdb1 /media/external-disk && mount | grep \"/media/external-disk\" && rsync -avz \"$HOME\" \"/media/external-disk/backup/$HOME\""
+alias gobackup="sudo mount /dev/sdb1 /media/external-disk && rsync -avz \"$HOME\" \"/media/external-disk/backup/$HOME\" && sudo umount /media/external"
 
 # bat
 if [ -f "$(which batcat)" ]; then
