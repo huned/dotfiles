@@ -240,4 +240,4 @@ export FZF_DEFAULT_OPTS='--layout=reverse --info=inline --border'
 
 [ -f ~/.env.secrets ] && source ~/.env.secrets
 
-. "$HOME/.deno/env"
+[ -f $HOME/.deno/env ] && source "$HOME/.deno/env"
