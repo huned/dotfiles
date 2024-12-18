@@ -1,27 +1,55 @@
 " Basic Vim Settings
-set nocompatible            " disable compatibility to old-time vi
-set showmatch               " show matching brackets
-set ignorecase             " case insensitive matching
-set hlsearch               " highlight search results
-set tabstop=2              " number of columns occupied by a tab
-set softtabstop=2          " see multiple spaces as tabstops
-set expandtab              " converts tabs to white space
-set shiftwidth=2           " width for autoindents
-set autoindent             " indent new lines
-set nonumber               " no line numbers by default
-set wildmode=longest,list  " bash-like tab completions
-set textwidth=80           " 80 column text width
-set cc=80                  " 80 column border
-set termguicolors         " use true colors
-set scrolloff=8            " keep 8 lines above/below cursor
-set undofile               " persistent undo
-set mouse=a
-filetype plugin indent on  " file type based indenting
-syntax on                  " syntax highlighting
+set nocompatible
+filetype plugin indent on
+syntax on
+
+" Interface
+set nonumber  " no line numbers by default
+set termguicolors
+set scrolloff=8
+"set mouse=a
+set showmatch
+set noshowmode  " Hide default mode text
+set laststatus=2  " Always show status line
+set signcolumn=yes  " Always show sign column
+
+" Search
+set ignorecase
+set smartcase  " Case sensitive if search contains uppercase
+set hlsearch
+set incsearch  " Show matches while typing
+
+" Indentation
+set tabstop=2
+set softtabstop=2
+set expandtab
+set shiftwidth=2
+set autoindent
+
+" Text width
+set textwidth=80
+set colorcolumn=80
+
+" Files
+set undofile
+set nobackup
+set noswapfile
+set hidden  " Allow switching buffers without saving
+
+" Completion
+set wildmode=longest,list
+set wildmenu  " Enhanced command completion
 
 " Whitespace characters
 set listchars=eol:↵,trail:~,tab:>-,nbsp:␣
-set nolist                 " don't display listchars by default
+set nolist
+
+" Performance
+set updatetime=300
+set timeoutlen=500
+
+" Key mappings
+"let mapleader = " "  " Space as leader key
 
 " Load Lua configurations
 lua require('core.colors')
