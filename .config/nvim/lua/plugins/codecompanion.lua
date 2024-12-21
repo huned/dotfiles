@@ -1,13 +1,13 @@
 require("codecompanion").setup({
-  display = {
-    chat = {
-      window = {
-        layout = "horizontal",
-        width = 1,
-        height = 0.5,
-      }
-    }
-  },
+  --- display = {
+  ---   chat = {
+  ---     window = {
+  ---       layout = "horizontal",
+  ---       width = 1,
+  ---       height = 0.5,
+  ---     }
+  ---   }
+  --- },
   adapters = {
     openai = function()
       return require("codecompanion.adapters").extend("openai", {
