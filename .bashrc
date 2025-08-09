@@ -216,6 +216,10 @@ alias vi="$EDITOR"
 # apt
 alias aupg="sudo apt update && apt list --upgradable -a && sudo apt upgrade"
 
+# serve local directory via http
+alias caddyserve="caddy file-server --browse --listen :8001"
+alias httpserve=caddyserve
+
 # bat
 if [ -f "$(which batcat)" ]; then
   alias cat="$(which batcat)"
@@ -238,6 +242,30 @@ export FZF_DEFAULT_OPTS='--layout=reverse --info=inline --border'
 
 #alias restartx="sudo systemctl restart display-manager"
 
+# Android SDK
+# Deprecated 8/9/2025
+#export ANDROID_HOME="$HOME/work/android-sdk"
+#export PATH="${ANDROID_HOME}/platform-tools:${PATH}"
+
+# Backups
+#alias backup='cat /proc/mounts | grep sdb1 && rsync -avz ${HOME} $(cat /proc/mounts | grep sdb1 | cut -d" " -f2)/$(date +%Y-%m-%d-%H%M)'
+backup() {
+  BACKUP_DEVICE='/dev/sdb1'
+  MOUNT_LINE=$(cat /proc/mounts | grep $BACKUP_DEVICE)
+  if [ -n "$MOUNT_LINE" ]; then
+    MOUNT_POINT=$(echo "$MOUNT_LINE" | awk '{print $2}')
+    DEST="$MOUNT_POINT/backup/$HOME/$(date +%Y-%m-%d-%H%M)"
+    echo "Backing up $HOME to $DEST"
+    mkdir -p "$DEST"
+    rsync -avz "$HOME/" "$DEST/"
+  else
+    echo "Error: ${BACKUP_DEVICE} is not mounted."
+    return 1
+  fi
+}
+
 [ -f ~/.env.secrets ] && source ~/.env.secrets
 
 [ -f $HOME/.deno/env ] && source "$HOME/.deno/env"
+
+test -e "$HOME/.shellfishrc" && source "$HOME/.shellfishrc"
