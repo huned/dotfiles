@@ -1,5 +1,5 @@
 -- Color scheme configuration
-vim.opt.background = 'light'
+-- vim.opt.background = 'light'
 vim.cmd('colorscheme catppuccin')
 --- vim.cmd('colorscheme one')
 
