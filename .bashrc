@@ -222,7 +222,8 @@ alias httpserve=caddyserve
 
 # bat
 if [ -f "$(which batcat)" ]; then
-  alias cat="$(which batcat)"
+  # NOTE 10/1/2025 - don't alias standard tool cat
+  #alias cat="$(which batcat)"
   alias bat="$(which batcat)"
   export BAT_STYLE="plain"
   export BAT_THEME="Solarized (dark)" # see batcat --list-themes
@@ -231,9 +232,10 @@ if [ -f "$(which batcat)" ]; then
 fi
 
 # ag
-if [ -f "$(which ag)" ]; then
-    alias grep="$(which ag)"
-fi
+# NOTE 10/1/2025 - don't alias standard tool grep
+#if [ -f "$(which ag)" ]; then
+#    alias grep="$(which ag)"
+#fi
 
 # fzf
 export FZF_DEFAULT_COMMAND='ag -l --nocolor --ignore .git --ignore vendor --hidden -g ""'
