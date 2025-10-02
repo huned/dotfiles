@@ -172,7 +172,7 @@ xterm*|rxvt*)
     ;;
 esac
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH"
 
 # git
 alias ga="git add"
@@ -214,7 +214,7 @@ export EDITOR=$(which nvim || which vim || which vi)
 alias vi="$EDITOR"
 
 # apt
-alias aupg="sudo apt update && apt list --upgradable -a && sudo apt upgrade"
+alias aupg="sudo apt update --fix-missing && apt list --upgradable -a && sudo apt upgrade && sudo apt autoremove"
 
 # serve local directory via http
 alias caddyserve="caddy file-server --browse --listen :8001"
@@ -269,3 +269,5 @@ backup() {
 [ -f $HOME/.deno/env ] && source "$HOME/.deno/env"
 
 test -e "$HOME/.shellfishrc" && source "$HOME/.shellfishrc"
+
+. "$HOME/.local/bin/env"
