@@ -28,7 +28,7 @@ set autoindent
 
 " Text width
 set textwidth=80
-set colorcolumn=80
+"set colorcolumn=80 " show a vertical bar at 80 chars
 
 " Files
 set undofile
@@ -53,7 +53,7 @@ set timeoutlen=500
 
 " Load Lua configurations
 lua require('core.colors')
-lua require('plugins.fzf')
 lua require('core.netrw')
 lua require('core.markdown')
-lua require('plugins.codecompanion')
+"lua require('plugins.codecompanion')
+lua require('plugins.fzf')
