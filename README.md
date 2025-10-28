@@ -31,13 +31,10 @@ How to use:
         # TODO ssh keys
         . ~/.env.secrets
 
-4. Run post-install scripts
+4. Run post-install script
 
         # System-wide modifications
         ./postinstall.sh
-
-        # User-specific modifications
-        ./postinstall-user.sh
 
 5. Clone working repos and run their install scripts
 

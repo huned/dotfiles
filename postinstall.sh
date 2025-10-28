@@ -2,36 +2,11 @@
 # Post-install script for ElementaryOS. Run it as root via sudo.
 #
 # TODOs
-# - 2/10/2023
-#   - separate camera and wifi setup
-#   - avoid downloading: store local copies of repos and pre-extracted firmware
+# - separate camera and wifi setup
+#   - store local blob of stuff needed to set up wifi hardware
 # - bail out if platform/uname doesn't meet expected value
 # - make this script idempotent
 # - change swap partition size to 2x RAM
-# - set up user account(s)
-#   - install fzf from git repo `git clone git://github.com/junegunn/fzf ~/.fzf
-#   && ~/.fzf/install`
-# - see also inline TODOs below
-# - run pulseaudio user systemd script https://askubuntu.com/questions/1146026/problem-with-pulseaudio-at-startup-it-doesnt-start
-# - nvm
-#  - npm install -g typescript
-#  - npm install -g ts-server
-#  - npm install -g ts-standard
-# - pyenv
-# - add user to lpadmin group: sudo usermod -aG lpadmin <username>
-# - add user to video group: sudo usermod -aG video <username>
-# - figure out which apps to install via flathub
-#
-# see also these notes:
-#- backup from old computer
-#  - create user account and add user to groups like lpadmin, video
-#  - clean up/delete unnecessary stuff
-#  - run and test a full backup
-#  - download wifi and camera stuff
-#  - move background jobs to a separate machine (pi?)
-#  - use tar to preserve filesystem permissions (don't copy files one by one)
-#- sudo apt install nvim silversearcher-ag jq parallel bat sqlite3 restic imagemagick
-#- flathub install firefox flatseal libreoffice dejadup beekeeper-studio epsonscan2
 
 # EOS_VERSION=$(cat /etc/issue.net | cut -d ' ' -f 3)
 # PLATFORM=$(uname -s)
@@ -66,11 +41,7 @@ apt-get -y install bat build-essential bzip2 curl docker.io jq net-tools pv rang
 apt-get -y install linux-headers-$(uname -r)
 
 # install essential programs
-apt-get -y install chromium-browser dconf-editor firefox transmission
-
-# TODO
-# - krita, deja dup, wps office, easydocs, vlc, cheese
-#
+apt-get -y install chromium-browser
 
 # install broadcom wifi drivers (wifi on 2013 macbook air)
 #
@@ -92,57 +63,7 @@ apt-get -y update && apt-get -y install git
 add-apt-repository ppa:neovim-ppa/stable 
 apt-get -y update && apt-get -y install neovim
 
-# beekeeper studio
-wget --quiet -O - https://deb.beekeeperstudio.io/beekeeper.key | apt-key add -
-echo "deb https://deb.beekeeperstudio.io stable main" > /etc/apt/sources.list.d/beekeeper-studio-app.list
-apt-get -y update && apt-get -y install beekeeper-studio
-
-# foliate
-add-apt-repository ppa:apandada1/foliate
-apt-get -y update && apt-get -y install foliate
-
-# TODO install peek via ppa (records animated gifs)
-
-# insync
-# NOTE: use ubuntu/focal because ElementaryOS 6.0 is based on Ubuntu/Focal.
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
-echo "deb http://apt.insync.io/ubuntu focal non-free contrib" > /etc/apt/sources.list.d/insync.list
-apt-get -y update && apt-get -y install insync
-
-# pantheon tweaks
-# TODO Only run if ElementaryOS 6.0
-apt-key adv --keyserver keyserver.ubuntu.com --recv c42d52715a84c7d0d02fc740c1d89326b1c71ab9
-echo "deb http://ppa.launchpad.net/philip.scott/pantheon-tweaks/ubuntu focal main\ndeb-src http://ppa.launchpad.net/philip.scott/pantheon-tweaks/ubuntu focal main" > /etc/apt/sources.list.d/pantheon-tweaks.list
-apt-get -y update && apt-get -y install pantheon-tweaks
-
-# zoom
-# 0. Install dependencies
-apt-get -y install libgl1-mesa-glx libegl1-mesa libxcb-xtest0
-# 1. Install zoom
-wget --quiet --timestamping --directory-prefix=$TMPDIR https://zoom.us/client/latest/zoom_amd64.deb
-dpkg -i $TMPDIR/zoom_amd64.deb
-
-# github:marsqing/libinput-three-finger-drag
-# See [README](https://github.com/marsqing/libinput-three-finger-drag).
-# The easiest/fastest way is to just download the release binary.
-# NOTE: Do not run this as root. Users should be a member of the "input" group
-# and run this manually or via an automatic mechanism like systemd.
-#
-# 0. Install dependencies
-#apt-get -y install libxdo3 libinput-tools
-#
-## 1. Install libinput-three-finger-drag
-#wget --quiet --timestamping --directory-prefix=$TMPDIR https://github.com/marsqing/libinput-three-finger-drag/releases/download/0.1/libinput-three-finger-drag.tgz
-#mkdir -p /usr/local/libinput-three-finger-drag
-#pushd /usr/local/libinput-three-finger-drag
-#tar xzf $TMPDIR/libinput-three-finger-drag.tgz
-#popd
-
-# 2. TODO: Add user to 'input' group
-# usermod -a -G input $USER
-
-# 3. TODO: Disable gestures in ElementaryOS 6.0
-# Sysem Settings > Mouse/Touchpad > Gestures > disable everything
+# TODO charmbracelet tools: crush, gum, glow, etc
 
 # install facetime hd drivers (camera on my macbook air)
 #
