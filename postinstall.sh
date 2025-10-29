@@ -13,8 +13,7 @@
 
 #[[ "${EOS_VERSION}" != "Odin" ]] && echo "Sorry, this script only runs on elementary OS Odin." && exit 1
 
-TMPDIR=$HOME/postinstall-tmp/postinstall-cache
-mkdir -p $TMPDIR
+TMPDIR=$(mktemp -d)
 
 read -p "Press ENTER to run $0 or CTRL-C to exit..." nop
 
