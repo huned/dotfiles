@@ -177,7 +177,3 @@ export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/.opencode/bin:$PATH"
 
 # ~/.local/bin/env
 [ -f $HOME/.local/bin/env ] && source "$HOME/.local/bin/env"
-
-# secrets
-# NOTE: SECRETS ARE ALWAYS LAST TO PREVENT PRIOR THINGS FROM STEALING SECRETS!
-[ -f ~/.secrets ] && source ~/.secrets/.env.secrets
