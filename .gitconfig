@@ -1,9 +1,9 @@
 [color]
-  dif = auto
-  diff = auto
-  status = auto
-  branch = auto
-  log = auto
+	dif = auto
+	diff = auto
+	status = auto
+	branch = auto
+	log = auto
 [push]
 	default = simple
 [init]
@@ -12,8 +12,29 @@
 	email = 24231+huned@users.noreply.github.com
 [pull]
 	rebase = true
+
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+
+[include]
+	path = /home/huned/work/forks/catppuccin/delta/catppuccin.gitconfig
+
+[core]
+	pager = delta
+
+[diff]
+	colorMoved = default
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	true-color = always
+	features = catppuccin-mocha line-numbers
+	#navigate = true  # use n and N to move between diff sections
+
+[merge]
+	conflictStyle = zdiff3
