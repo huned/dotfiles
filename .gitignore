@@ -1,3 +1,4 @@
 .DS_Store
 tmp
 .local/share/nvim/.netrwhist
+*secrets
