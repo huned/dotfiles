@@ -214,7 +214,7 @@ export EDITOR=$(which nvim || which vim || which vi)
 alias vi="$EDITOR"
 
 # apt
-alias aupg="sudo apt update --fix-missing && apt list --upgradable -a && sudo apt upgrade && sudo apt autoremove"
+alias aupg="sudo apt update --fix-missing && apt list --upgradable -a && sudo apt upgrade -y && sudo apt autoremove -y"
 
 # serve local directory via http
 alias caddyserve="caddy file-server --browse --listen :8001"
