@@ -54,6 +54,7 @@ set timeoutlen=500
 " Load Lua configurations
 lua require('core.colors')
 lua require('core.netrw')
+lua require('core.autocomplete')
 lua require('core.markdown')
 "lua require('plugins.codecompanion')
 lua require('plugins.fzf')
