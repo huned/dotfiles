@@ -172,103 +172,12 @@ xterm*|rxvt*)
     ;;
 esac
 
-export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH"
-
-# git
-alias ga="git add"
-alias gd="git diff"
-alias gp="git pull"
-alias gs="git status --short"
-alias gl="git log --stat"
-alias gc="git commit -v"
-alias gist="gist-paste"
-
-# docker
-# DEPRECATED 11/30/2024: why all the unnecessary complexity with docker?
-#alias dps="docker ps -a"
-#alias dprune="docker container prune --force && docker image prune --force"
-#alias dlsimg="docker image ls"
-#alias dlscont="docker container ls"
-#alias dstart="docker container run"
-#alias dtmp="docker container run --rm"
-#alias dexec="docker exec"
-#alias dshell="docker exec --interactive --tty"
-
-# systemd
-# DEPRECATED 11/30/2024: why all the unnecessary complexity with systemd?
-#alias sysdlsunits="systemctl --user list-unit-files"
-#alias sysdlstimers="systemctl --user list-timers --all"
-#alias sysdls="sysdlsunits; sysdlstimers"
-#alias sysdstatus="systemctl --user status"
-#alias sysdlog="journalctl --user -xef"
-#alias sysdreload="systemctl --user daemon-reload"
-#alias sysdlsfailed="systemctl --user --failed --all"
-#alias sysdstartunit="systemctl --user reload-or-restart"
-#alias sysdstopunit="systemctl --user stop"
-
-# common system commands
-alias less="less -FIRX"
-
-# editor
 export EDITOR=$(which nvim || which vim || which vi)
-alias vi="$EDITOR"
+export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/.opencode/bin:$PATH"
 
-# apt
-alias aupg="sudo apt update --fix-missing && apt list --upgradable -a && sudo apt upgrade -y && sudo apt autoremove -y"
+# ~/.local/bin/env
+[ -f $HOME/.local/bin/env ] && source "$HOME/.local/bin/env"
 
-# serve local directory via http
-alias caddyserve="caddy file-server --browse --listen :8001"
-alias httpserve=caddyserve
-
-# bat
-###if [ -f "$(which batcat)" ]; then
-###  alias cat="$(which batcat) --style=plain"
-###  alias bat="$(which batcat)"
-###  export BAT_STYLE="auto"
-###  export BAT_THEME="Catppuccin Mocha" # see batcat --list-themes
-###  export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
-###  export MANROFFOPT="-c"
-###fi
-
-# ag
-# NOTE 10/1/2025 - don't alias standard tool grep
-#if [ -f "$(which ag)" ]; then
-#    alias grep="$(which ag)"
-#fi
-
-# fzf
-###export FZF_DEFAULT_COMMAND='ag -l --nocolor --ignore .git --ignore vendor --hidden -g ""'
-###export FZF_DEFAULT_OPTS='--layout=reverse --info=inline --border'
-###[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-#alias restartx="sudo systemctl restart display-manager"
-
-# Android SDK
-# Deprecated 8/9/2025
-#export ANDROID_HOME="$HOME/work/android-sdk"
-#export PATH="${ANDROID_HOME}/platform-tools:${PATH}"
-
-# Backups
-#alias backup='cat /proc/mounts | grep sdb1 && rsync -avz ${HOME} $(cat /proc/mounts | grep sdb1 | cut -d" " -f2)/$(date +%Y-%m-%d-%H%M)'
-backup() {
-  BACKUP_DEVICE='/dev/sdb1'
-  MOUNT_LINE=$(cat /proc/mounts | grep $BACKUP_DEVICE)
-  if [ -n "$MOUNT_LINE" ]; then
-    MOUNT_POINT=$(echo "$MOUNT_LINE" | awk '{print $2}')
-    DEST="$MOUNT_POINT/backup/$HOME/$(date +%Y-%m-%d-%H%M)"
-    echo "Backing up $HOME to $DEST"
-    mkdir -p "$DEST"
-    rsync -avz "$HOME/" "$DEST/"
-  else
-    echo "Error: ${BACKUP_DEVICE} is not mounted."
-    return 1
-  fi
-}
-
-[ -f ~/.env.secrets ] && source ~/.env.secrets
-
-[ -f $HOME/.deno/env ] && source "$HOME/.deno/env"
-
-test -e "$HOME/.shellfishrc" && source "$HOME/.shellfishrc"
-
-. "$HOME/.local/bin/env"
+# secrets
+# NOTE: SECRETS ARE ALWAYS LAST TO PREVENT PRIOR THINGS FROM STEALING SECRETS!
+[ -f ~/.secrets ] && source ~/.secrets/.env.secrets
