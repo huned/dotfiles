@@ -11,6 +11,7 @@ How to use:
 
         # bash
         ln -s `pwd`/.bashrc ~/.bashrc
+        ln -s `pwd`/.bash_aliases ~/.bash_aliases
 
         # nvim
         mkdir -p ~/.config/nvim
@@ -20,22 +21,9 @@ How to use:
         ln -s `pwd`/.local/share/nvim/site/pack/huned ~/.local/share/nvim/site/pack/huned
 
         # Other rc files
-        ln -s `pwd`/.toprc ~/.toprc
         ln -s `pwd`/.gitconfig ~/.gitconfig
         ln -s `pwd`/.sqliterc ~/.sqliterc
-        ln -s `pwd`/.nvmrc ~/.nvmrc
-        ln -s `pwd`/.npmrc ~/.npmrc
-        ln -s `pwd`/.ruby-version ~/.ruby-version
+        ln -s `pwd`/.tmux.conf ~/.tmux.conf
 
-        # Private settings
-        # TODO ssh keys
-        . ~/.env.secrets
-
-4. Run post-install script
-
-        # System-wide modifications
-        ./postinstall.sh
-
-5. Clone working repos and run their install scripts
-
-        # TODO
+        # Optional: private stuff
+        . ~/.secrets/whatever.secrets
