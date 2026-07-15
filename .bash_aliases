@@ -21,6 +21,9 @@ alias aupg="sudo apt update --fix-missing && apt list --upgradable -a && sudo ap
 alias caddyserve="caddy file-server --browse --listen :8001"
 alias httpserve=caddyserve
 
+# color scheme
+alias color-scheme="gsettings get org.gnome.desktop.interface color-scheme"
+
 #
 # INTEGRATIONS
 #
