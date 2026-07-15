@@ -221,15 +221,14 @@ alias caddyserve="caddy file-server --browse --listen :8001"
 alias httpserve=caddyserve
 
 # bat
-if [ -f "$(which batcat)" ]; then
-  # NOTE 10/1/2025 - don't alias standard tool cat
-  #alias cat="$(which batcat)"
-  alias bat="$(which batcat)"
-  export BAT_STYLE="plain"
-  export BAT_THEME="Solarized (dark)" # see batcat --list-themes
-  export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
-  export MANROFFOPT="-c"
-fi
+###if [ -f "$(which batcat)" ]; then
+###  alias cat="$(which batcat) --style=plain"
+###  alias bat="$(which batcat)"
+###  export BAT_STYLE="auto"
+###  export BAT_THEME="Catppuccin Mocha" # see batcat --list-themes
+###  export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+###  export MANROFFOPT="-c"
+###fi
 
 # ag
 # NOTE 10/1/2025 - don't alias standard tool grep
@@ -238,9 +237,9 @@ fi
 #fi
 
 # fzf
-export FZF_DEFAULT_COMMAND='ag -l --nocolor --ignore .git --ignore vendor --hidden -g ""'
-export FZF_DEFAULT_OPTS='--layout=reverse --info=inline --border'
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+###export FZF_DEFAULT_COMMAND='ag -l --nocolor --ignore .git --ignore vendor --hidden -g ""'
+###export FZF_DEFAULT_OPTS='--layout=reverse --info=inline --border'
+###[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 #alias restartx="sudo systemctl restart display-manager"
 
