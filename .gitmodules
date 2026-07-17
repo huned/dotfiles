@@ -22,3 +22,12 @@
 [submodule ".local/share/nvim/site/pack/huned/start/catppuccin"]
 	path = .local/share/nvim/site/pack/huned/start/catppuccin
 	url = https://github.com/catppuccin/nvim
+[submodule ".tmux/catppuccin"]
+	path = .tmux/catppuccin
+	url = https://github.com/catppuccin/tmux.git
+[submodule ".btop/catppuccin"]
+	path = .btop/catppuccin
+	url = https://github.com/catppuccin/btop.git
+[submodule ".delta/catppuccin"]
+	path = .delta/catppuccin
+	url = https://github.com/catppuccin/delta.git
