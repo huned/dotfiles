@@ -1,6 +1,0 @@
-- set up catppuccin light/dark themes for:
-  - terminal - skipped (no theme configured)
-  - tmux - catppuccin (submodule at .tmux/catppuccin)
-  - nvim - catppuccin (submodule at .local/share/nvim/site/pack/huned/start/catppuccin)
-  - git, git-delta - catppuccin (submodule at .delta/catppuccin)
-  - btop - catppuccin-mocha (submodule at .btop/catppuccin)
