@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-git submodule init && git submodule update
+git submodule update --init --recursive --force
 
 ln -frs .bashrc ~/.bashrc
 ln -frs .bash_aliases ~/.bash_aliases
