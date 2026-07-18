@@ -16,6 +16,7 @@ ln -frs .local/share/nvim/site/pack/huned ~/.local/share/nvim/site/pack/huned
 # batcat catppuccin theme
 mkdir -p ~/.config/bat
 ln -frs .bat/catppuccin/themes ~/.config/bat/themes
+batcat cache --build
 
 # tmux catppuccin plugin
 mkdir -p ~/.config/tmux/plugins/catppuccin
