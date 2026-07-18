@@ -173,7 +173,7 @@ xterm*|rxvt*)
 esac
 
 export EDITOR=$(which nvim || which vim || which vi)
-export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/.opencode/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/.opencode/bin:$PATH"
 
 # ~/.local/bin/env
 [ -f $HOME/.local/bin/env ] && source "$HOME/.local/bin/env"
