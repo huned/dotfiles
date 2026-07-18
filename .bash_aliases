@@ -32,6 +32,9 @@ alias color-scheme="gsettings get org.gnome.desktop.interface color-scheme"
 export EDITOR=$(which nvim || whihc vim || which vi)
 alias vi="$EDITOR"
 
+# batcat
+export BAT_THEME="Catppuccin Mocha"
+
 # deno
 [ -f $HOME/.deno/env ] && source "$HOME/.deno/env"
 
