@@ -14,8 +14,8 @@ mkdir -p ~/.local/share/nvim/site/pack
 ln -frs .local/share/nvim/site/pack/huned ~/.local/share/nvim/site/pack/huned
 
 # batcat catppuccin theme
-mkdir -p ~/.config/bat/syntaxes
-ln -frs .bat/catppuccin/themes ~/.config/bat/syntaxes/themes
+mkdir -p ~/.config/bat
+ln -frs .bat/catppuccin/themes ~/.config/bat/themes
 
 # tmux catppuccin plugin
 mkdir -p ~/.config/tmux/plugins/catppuccin
