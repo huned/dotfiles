@@ -27,6 +27,10 @@ mkdir -p ~/.config/btop/themes
 ln -frs .config/btop/btop.conf ~/.config/btop/btop.conf
 ln -frs .btop/catppuccin/themes/catppuccin_mocha.theme ~/.config/btop/themes/catppuccin_mocha.theme
 
+# foot terminal (catppuccin-mocha theme)
+mkdir -p ~/.config/foot
+ln -frs .config/foot/foot.ini ~/.config/foot/foot.ini
+
 # other stuff
 ln -frs .gitconfig ~/.gitconfig
 ln -frs .sqliterc ~/.sqliterc
