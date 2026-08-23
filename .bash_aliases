@@ -24,6 +24,10 @@ alias httpserve=caddyserve
 # color scheme
 alias color-scheme="gsettings get org.gnome.desktop.interface color-scheme"
 
+# window focus mode
+alias sloppyfocus="gsettings set org.gnome.desktop.wm.preferences focus-mode 'sloppy'"
+alias clickfocus="gsettings set org.gnome.desktop.wm.preferences focus-mode 'click'"
+
 #
 # INTEGRATIONS
 #
@@ -38,6 +42,13 @@ export BAT_THEME="Catppuccin Mocha"
 
 # deno
 [ -f $HOME/.deno/env ] && source "$HOME/.deno/env"
+
+# go
+[ -x /usr/local/go ] && export PATH="$HOME/go/bin:/usr/local/go/bin:$PATH"
+
+# quick security probe check
+alias check_probes='sudo ss -tulnp && sudo journalctl -u ufw -n 50 | grep REJECT && sudo fail2ban-client status'
+
 
 # shellfish
 [ -f $HOME/.shellfishrc ] && source "$HOME/.shellfishrc"
