@@ -49,6 +49,8 @@ export BAT_THEME="Catppuccin Mocha"
 # quick security probe check
 alias check_probes='sudo ss -tulnp && sudo journalctl -u ufw -n 50 | grep REJECT && sudo fail2ban-client status'
 
+# omniroute
+alias omniroute="nice -n 19 ionice -c 3 omniroute --no-open"
 
 # shellfish
 [ -f $HOME/.shellfishrc ] && source "$HOME/.shellfishrc"
