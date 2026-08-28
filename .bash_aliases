@@ -15,7 +15,7 @@ alias gc="git commit -v"
 alias gist="gist-paste"
 
 # apt
-alias aupg="sudo apt update --fix-missing && apt list --upgradable -a && sudo apt upgrade -y && sudo apt autoremove -y"
+alias aupg="sudo apt update --fix-missing && apt list --upgradable -a && sudo apt upgrade -y && sudo apt autoremove --purge -y"
 
 # serve local directory via http
 alias caddyserve="caddy file-server --browse --listen :8001"
