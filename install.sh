@@ -5,6 +5,10 @@ git submodule update --init --recursive --force
 ln -frs .bashrc ~/.bashrc
 ln -frs .bash_aliases ~/.bash_aliases
 
+# rsync-based backups
+ln -frs .bash_backup_funcs ~/.bash_backup_funcs
+ln -frs .backupignore ~/.backupignore
+
 # nvim
 mkdir -p ~/.config/nvim
 ln -frs .config/nvim/init.vim ~/.config/nvim

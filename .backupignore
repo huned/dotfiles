@@ -1,0 +1,100 @@
+# ~/.backupignore - Custom rsync exclude patterns for backup function
+# One pattern per line. Lines starting with # are comments.
+# Patterns follow rsync filter rules (see 'man rsync' FILTER RULES)
+
+# === System / Cache directories ===
+.cache/
+.local/share/containers/
+.local/share/flatpak/
+.local/share/umu/
+.local/share/Trash/
+.local/opt/
+.xorgxrdp.*.log
+.var/app/
+
+# === Language / Package manager caches ===
+.cargo/registry/
+.cargo/git/
+.rustup/
+.go/pkg/mod/
+.npm/
+.nvm/
+.deno/
+.bun/
+.pnpm-store/
+.yarn/
+.gradle/
+.m2/
+
+# === Build / Development tool caches ===
+.nx/
+.opencode/
+.promptfoo/
+.omniroute/
+.crush/
+
+# === Project-specific (large, regeneratable) ===
+work/edgardb/db/
+work/edgardb/public/
+work/edgardb/tmp/
+work/**/node_modules/
+work/**/target/
+work/**/dist/
+work/**/build/
+work/**/.next/
+work/**/.vercel/
+work/**/.turbo/
+work/**/.parcel-cache/
+
+# === Dotfiles / configs that are symlinked or regeneratable ===
+.bash_history
+.lesshst
+.sqlite_history
+.python_history
+.wget-hsts
+.Xauthority
+.step/
+
+# === Secrets / sensitive (backup separately if needed) ===
+.secrets/
+.ssh/
+.gnupg/
+.aws/
+.docker/
+.kube/
+.config/gcloud/
+*.pem
+*.key
+*.crt
+id_rsa*
+id_ed25519*
+.env
+.env.local
+.env.*.local
+
+# === Media / Downloads (optional - uncomment if you don't want these backed up) ===
+# Downloads/
+# Music/
+# Pictures/
+# Videos/
+
+# === Virtual machines / Games (uncomment if applicable) ===
+# .steam/
+# SteamLibrary/
+# VirtualBox VMs/
+# *.vdi
+# *.vmdk
+# *.qcow2
+# *.iso
+# *.img
+
+# === Temporary / transient files ===
+tmp/
+*.tmp
+*.log
+*.swp
+*~
+.DS_Store
+Thumbs.db
+lost+found/
+.Trash-*/

@@ -57,17 +57,4 @@ alias omniroute="nice -n 19 ionice -c 3 omniroute --no-open"
 
 # Backups
 #alias backup='cat /proc/mounts | grep sdb1 && rsync -avz ${HOME} $(cat /proc/mounts | grep sdb1 | cut -d" " -f2)/$(date +%Y-%m-%d-%H%M)'
-backup() {
-  BACKUP_DEVICE='/dev/sdb1'
-  MOUNT_LINE=$(cat /proc/mounts | grep $BACKUP_DEVICE)
-  if [ -n "$MOUNT_LINE" ]; then
-    MOUNT_POINT=$(echo "$MOUNT_LINE" | awk '{print $2}')
-    DEST="$MOUNT_POINT/backup/$HOME/$(date +%Y-%m-%d-%H%M)"
-    echo "Backing up $HOME to $DEST"
-    mkdir -p "$DEST"
-    rsync -avz "$HOME/" "$DEST/"
-  else
-    echo "Error: ${BACKUP_DEVICE} is not mounted."
-    return 1
-  fi
-}
+[ -f "$HOME/.bash_backup_funcs" ] && source "$HOME/.bash_backup_funcs"

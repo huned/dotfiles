@@ -1,0 +1,141 @@
+#!/usr/bin/env bash
+# ~/.bash_backup_funcs — backup(), lock_backup(), unlock_backup()
+# Sourced by ~/.bash_aliases. Can also be run as a standalone script.
+
+BACKUP_DEVICE='/dev/sdb1'
+# CONTAINER_DIR="/media/huned/ca6ae8d6-349b-4c42-bc49-5a51fb2a8c67/backup"
+# CONTAINER="$CONTAINER_DIR/backup.img"
+# MAPPER_NAME="backup_crypt"
+# BACKUP_MOUNT_POINT="/media/backups"
+
+# lock_backup() {
+#   echo "Unmounting and locking backup container..."
+#   umount "$BACKUP_MOUNT_POINT" 2>/dev/null && echo "Unmounted $BACKUP_MOUNT_POINT"
+#   cryptsetup close "$MAPPER_NAME" 2>/dev/null && echo "Locked container"
+# }
+
+# unlock_backup() {
+#   # Check drive is mounted
+#   local MOUNT_LINE
+#   MOUNT_LINE=$(cat /proc/mounts | grep "$BACKUP_DEVICE")
+#   if [ -z "$MOUNT_LINE" ]; then
+#     echo "Error: $BACKUP_DEVICE is not mounted."
+#     return 1
+#   fi
+#
+#   # Check container exists
+#   if [ ! -f "$CONTAINER" ]; then
+#     echo "Error: Container not found at $CONTAINER"
+#     return 1
+#   fi
+#
+#   # Check if already unlocked
+#   if [ -b "/dev/mapper/$MAPPER_NAME" ]; then
+#     echo "Container already unlocked."
+#     if ! mountpoint -q "$BACKUP_MOUNT_POINT" 2>/dev/null; then
+#       mkdir -p "$BACKUP_MOUNT_POINT"
+#       mount "/dev/mapper/$MAPPER_NAME" "$BACKUP_MOUNT_POINT"
+#       echo "Mounted at $BACKUP_MOUNT_POINT"
+#     fi
+#     return 0
+#   fi
+#
+#   # Unlock with passphrase
+#   echo "Unlocking backup container..."
+#   cryptsetup open "$CONTAINER" "$MAPPER_NAME"
+#
+#   # Mount
+#   mkdir -p "$BACKUP_MOUNT_POINT"
+#   mount "/dev/mapper/$MAPPER_NAME" "$BACKUP_MOUNT_POINT"
+#   echo "Backup container unlocked and mounted at $BACKUP_MOUNT_POINT"
+# }
+
+backup() {
+  BACKUP_DEVICE='/dev/sdb1'
+  MOUNT_LINE=$(cat /proc/mounts | grep $BACKUP_DEVICE)
+  if [ -n "$MOUNT_LINE" ]; then
+    MOUNT_POINT=$(echo "$MOUNT_LINE" | awk '{print $2}')
+    BACKUP_ROOT="$MOUNT_POINT/backup/$HOME"
+    DEST="$BACKUP_ROOT/$(date +%Y-%m-%d-%H%M)"
+    LATEST="$BACKUP_ROOT/latest"
+
+    echo "Backing up $HOME to $DEST"
+    mkdir -p "$DEST"
+
+    # Find previous backup for --link-dest (hard-link incremental)
+    PREV=$(ls -dt "$BACKUP_ROOT"/*/ 2>/dev/null | head -1)
+
+    # Load exclude patterns from ~/.backupignore (one pattern per line, # comments)
+    EXCLUDE_FILE="$HOME/.backupignore"
+    if [ -f "$EXCLUDE_FILE" ]; then
+      mapfile -t EXCLUDE_PATTERNS < <(grep -v '^#' "$EXCLUDE_FILE" | grep -v '^$')
+    else
+      EXCLUDE_PATTERNS=()
+    fi
+
+    RSYNC_OPTS=(
+      -az
+      --delete                    # delete files from dest that were removed from source
+      --delete-excluded           # also delete excluded files from dest
+      --partial                   # keep partial transfers for resume
+      --inplace                   # write files in-place (faster for large files, enables resume)
+      --info=progress2            # show overall progress bar
+      --human-readable            # human-readable sizes
+      --exclude='node_modules/'   # JS/TS dependencies
+      --exclude='.git/'           # git repos (backup .git/config separately if needed)
+      --exclude='*.pyc'           # Python bytecode
+      --exclude='__pycache__/'    # Python cache
+      --exclude='.cache/'         # generic caches
+      --exclude='Cache/'          # macOS/Chrome caches
+      --exclude='.npm/'           # npm cache
+      --exclude='.yarn/'          # yarn cache
+      --exclude='.pnpm-store/'    # pnpm store
+      --exclude='.gradle/'        # Gradle cache
+      --exclude='.m2/'            # Maven cache
+      --exclude='.cargo/'         # Cargo cache (keep src, exclude registry/git)
+      --exclude='target/'         # Rust/Cargo build artifacts
+      --exclude='dist/'           # build outputs
+      --exclude='build/'          # build outputs
+      --exclude='.next/'          # Next.js build
+      --exclude='.vercel/'        # Vercel build
+      --exclude='.turbo/'         # Turborepo cache
+      --exclude='.parcel-cache/'  # Parcel cache
+      --exclude='*.log'           # log files
+      --exclude='*.tmp'           # temp files
+      --exclude='*.swp'           # vim swap
+      --exclude='*~'              # backup files
+      --exclude='.DS_Store'       # macOS metadata
+      --exclude='Thumbs.db'       # Windows metadata
+      --exclude='lost+found/'     # filesystem recovery
+      --exclude='.Trash-*/'       # Linux trash
+      --exclude='.local/share/Trash/' # user trash
+      --exclude='.steam/'         # Steam games
+      --exclude='SteamLibrary/'   # Steam library
+      --exclude='VirtualBox VMs/' # VM images (huge)
+      --exclude='*.vdi'           # VirtualBox disk images
+      --exclude='*.vmdk'          # VMware disk images
+      --exclude='*.qcow2'         # QEMU disk images
+      --exclude='*.iso'           # ISO images
+      --exclude='*.img'           # disk images
+    )
+
+    # Add patterns from ~/.backupignore
+    for pattern in "${EXCLUDE_PATTERNS[@]}"; do
+      RSYNC_OPTS+=(--exclude="$pattern")
+    done
+
+    if [ -n "$PREV" ] && [ "$PREV" != "$DEST/" ]; then
+      RSYNC_OPTS+=(--link-dest="$PREV")
+      echo "Linking unchanged files from previous backup: $PREV"
+    fi
+
+    rsync "${RSYNC_OPTS[@]}" "$HOME/" "$DEST/"
+
+    # Update 'latest' symlink
+    ln -sfn "$DEST" "$LATEST"
+    echo "Backup complete. Latest symlink: $LATEST -> $DEST"
+  else
+    echo "Error: ${BACKUP_DEVICE} is not mounted."
+    return 1
+  fi
+}
