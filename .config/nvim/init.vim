@@ -51,15 +51,9 @@ set timeoutlen=500
 " Key mappings
 "let mapleader = " "  " Space as leader key
 
-" Disable enhanced kitty keyboard protocol.
-" Needed b/c I have foot terminal 1.16.2 via ubuntu/noble.
-" TODO Remove this line when we are using foot >= 1.20
-lua io.write("\x1b[>1u")
-
 " Load Lua configurations
 lua require('core.colors')
 lua require('core.netrw')
-lua require('core.autocomplete')
+"lua require('core.autocomplete')
 lua require('core.markdown')
-"lua require('plugins.codecompanion')
 lua require('plugins.fzf')
