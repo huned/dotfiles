@@ -14,6 +14,9 @@ alias gl="git log --stat"
 alias gc="git commit -v"
 alias gist="gist-paste"
 
+# FZF
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
+
 # apt
 alias aupg="sudo apt update --fix-missing && apt list --upgradable -a && sudo apt upgrade -y && sudo apt autoremove --purge -y"
 
