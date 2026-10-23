@@ -61,3 +61,5 @@ alias omniroute="nice -n 19 ionice -c 3 omniroute --no-open"
 # Backups
 #alias backup='cat /proc/mounts | grep sdb1 && rsync -avz ${HOME} $(cat /proc/mounts | grep sdb1 | cut -d" " -f2)/$(date +%Y-%m-%d-%H%M)'
 [ -f "$HOME/.bash_backup_funcs" ] && source "$HOME/.bash_backup_funcs"
+
+alias colortest="~/Downloads/24-bit-color.sh && cat ~/Downloads/emoji.txt"
